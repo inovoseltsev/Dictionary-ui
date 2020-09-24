@@ -1,17 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import * as serviceWorker from "./serviceWorker";
+import {Route, Switch} from "react-router";
+import {BrowserRouter as Router} from "react-router-dom";
+import {Provider} from "react-redux";
+import App from "./App";
+import store from "./store/store";
+
+import "bootstrap-material-design/dist/css/bootstrap-material-design.min.css";
+import "./index.css";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <ErrorBoundary>
+      <Router>
+        <Switch>
+          <Route path="/" component={App}/>
+          <Route path="*">Not found</Route>
+        </Switch>
+      </Router>
+    </ErrorBoundary>
+  </Provider>,
+  document.getElementById("root")
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

@@ -1,0 +1,28 @@
+.home-menu {
+    height: 400px;
+    margin: 0 auto;
+    padding-top: 14%
+}
+
+.home-menu h1 {
+    color: #fbfbfd;
+    font-size: 60px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+}
+
+.home-menu p {
+    color: #fbfbfd;
+    font-size: 45px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    font-weight: 200;
+}
+
+.home-menu .control-buttons {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    margin: 10vh auto auto auto;
+}
