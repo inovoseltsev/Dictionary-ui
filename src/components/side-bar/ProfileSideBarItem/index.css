@@ -1,0 +1,21 @@
+.profile-item-wrapper {
+    background-color: #ffffff;
+}
+
+.profile-item-wrapper a {
+    text-decoration: none !important;
+    height: 15px;
+}
+
+.profile-item-wrapper a p {
+    font-size: 12px;
+    font-weight: 500;
+    color: #495057;
+    /*margin-top: 60px;*/
+    margin-right: 10px;
+    text-align: right;
+}
+
+.profile-item-wrapper a p:hover {
+    opacity: 0.9;
+}

@@ -19,8 +19,8 @@ export default function authReducer(state = initialState, action) {
     case LOGIN_USER_REQUEST:
       return {
         ...state,
-        status: LOADING,
-        error: null
+        error: null,
+        status: LOADING
       }
 
     case LOGIN_USER_SUCCESS:
@@ -28,25 +28,25 @@ export default function authReducer(state = initialState, action) {
         ...state,
         authData: action.payload,
         isAuth: true,
-        status: SUCCEED,
-        error: null
+        error: null,
+        status: SUCCEED
       }
 
     case LOGIN_USER_FAILURE:
       return {
         ...state,
-        status: FAILED,
         isAuth: false,
         error: action.payload,
+        status: FAILED
       }
 
     case LOGOUT_USER:
       return {
         ...state,
-        status: SUCCEED,
         authData: null,
         isAuth: false,
         error: null,
+        status: SUCCEED
       }
 
     default:

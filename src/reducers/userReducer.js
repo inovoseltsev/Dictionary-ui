@@ -9,7 +9,10 @@ import {
 import {FAILED, IDLE, LOADING, SUCCEED} from "../helpers/requestStatus";
 
 const initialState = {
-  users: [],
+  id: null,
+  firstName: "",
+  lastName: "",
+  login: "",
   status: IDLE,
   error: null
 }
@@ -26,7 +29,7 @@ export default function userReducer(state = initialState, action) {
     case CREATE_USER_SUCCESS:
       return {
         ...state,
-        users: action.payload,
+        ...action.payload,
         status: SUCCEED
       };
 
@@ -40,16 +43,16 @@ export default function userReducer(state = initialState, action) {
     case GET_USER_REQUEST:
       return {
         ...state,
-        status: LOADING,
-        error: null
+        error: null,
+        status: LOADING
       };
 
     case GET_USER_SUCCESS:
       return {
         ...state,
-        users: action.payload,
-        status: SUCCEED,
-        error: null
+        ...action.payload,
+        error: null,
+        status: SUCCEED
       };
 
     case GET_USER_FAILURE:

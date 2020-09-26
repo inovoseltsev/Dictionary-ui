@@ -4,9 +4,9 @@ import {Redirect, Route} from "react-router";
 export default function PrivateRoute({component: Component, isAuth, ...rest}) {
 
   return (
-    <Route {...rest} render={props => (
+    <Route {...rest} render={() => (
       isAuth ?
-        (<Component {...props}/>) :
+        (<Component {...rest}/>) :
         (<Redirect to={"/sign-in"}/>)
     )}/>
   );

@@ -18,7 +18,7 @@ export const createUserError = (error) => {
 export const createUserSuccess = (user) => {
   return {
     type: CREATE_USER_SUCCESS,
-    payload: [user]
+    payload: user
   };
 }
 
@@ -35,7 +35,7 @@ export const createUser = (user) => async (dispatch) => {
 export const getUserSuccess = (user) => {
   return {
     type: GET_USER_SUCCESS,
-    payload: [user]
+    payload: user
   };
 }
 

@@ -8,6 +8,8 @@ import App from "./App";
 import store from "./store/store";
 
 import "bootstrap-material-design/dist/css/bootstrap-material-design.min.css";
+import "font-awesome/css/font-awesome.min.css"
+import "font-awesome/scss/font-awesome.scss"
 import "./index.css";
 import ErrorBoundary from "./components/ErrorBoundary";
 
