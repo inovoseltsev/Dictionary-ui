@@ -16,7 +16,7 @@ export default function UserSideBar() {
   }
 
   const [items] = useState([
-    createSideBarItem(1, "/word-sets", "Word sets"),
+    createSideBarItem(1, "/term-groups", "Term groups"),
     createSideBarItem(2, "/folders", "Folders"),
     createSideBarItem(3, "/profile", "Profile"),
     createSideBarItem(4, "/sign-in", "Logout", "", onLogoutClick)

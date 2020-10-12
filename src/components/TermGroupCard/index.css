@@ -1,4 +1,4 @@
-.word-set-card {
+.term-group-card {
     width: 320px;
     height: 156px;
     background-color: #ffffff;
@@ -8,7 +8,7 @@
 }
 
 .add-card .add-icon-wrapper {
-    color: #333333;
+    color: #2daee5;
     display: flex;
     width: 25%;
     height: 100%;
@@ -19,6 +19,7 @@
 
 .add-icon-wrapper:hover {
     cursor: pointer;
+    color: #199acb;
 }
 
 .add-icon-wrapper i {

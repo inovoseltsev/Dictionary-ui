@@ -3,7 +3,7 @@ import {Switch} from "react-router";
 import PrivateRoute from "../../components/PrivateRoute";
 import {useSelector} from "react-redux";
 import AppRow from "../../components/AppRow";
-import WordSetsPlaceholder from "../../components/WordSetsPlaceholder";
+import TermGroupsPlaceholder from "../../components/TermGroupsPlaceholder";
 
 export default function UserPage() {
 
@@ -13,11 +13,11 @@ export default function UserPage() {
     <Switch>
       <PrivateRoute
         path={"/home"} isAuth={isAuth} component={AppRow}
-        content={<WordSetsPlaceholder/>}
+        content={<TermGroupsPlaceholder/>}
       />
       <PrivateRoute
-        path={"/word-sets"} isAuth={isAuth} component={AppRow}
-        content={<WordSetsPlaceholder/>}
+        path={"/term-groups"} isAuth={isAuth} component={AppRow}
+        content={<TermGroupsPlaceholder/>}
       />
     </Switch>
   )

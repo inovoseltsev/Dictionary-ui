@@ -30,6 +30,7 @@ export default async ({
   return axios(reqOptions)
     .then(res => {
       if (res.status >= 200 && res.status <= 300) {
+        console.log(res);
         return res.data;
       }
       return res;
