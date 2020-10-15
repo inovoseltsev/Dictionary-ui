@@ -3,7 +3,7 @@ import {Switch} from "react-router";
 import PrivateRoute from "../../components/PrivateRoute";
 import {useSelector} from "react-redux";
 import AppRow from "../../components/AppRow";
-import TermGroupsPlaceholder from "../../components/TermGroupsPlaceholder";
+import TermGroupsPlaceholder from "../../components/term-group/TermGroupsPlaceholder";
 
 export default function UserPage() {
 
