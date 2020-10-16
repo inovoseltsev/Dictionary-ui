@@ -12,7 +12,6 @@ const initialState = {
   id: null,
   firstName: "",
   lastName: "",
-  login: "",
   status: IDLE,
   error: null
 }
@@ -23,6 +22,7 @@ export default function userReducer(state = initialState, action) {
     case CREATE_USER_REQUEST:
       return {
         ...state,
+        error: null,
         status: LOADING
       };
 
@@ -30,6 +30,7 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         ...action.payload,
+        error: null,
         status: SUCCEED
       };
 

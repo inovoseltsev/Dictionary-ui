@@ -14,7 +14,6 @@ export default function FormGroup(props) {
     labelName, register, error, onClick
   } = props;
 
-
   const [showPassword, setShowPassword] = useState(false);
   const [isPassword] = useState(inputType === "password");
 

@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
-import {useForm} from "react-hook-form";
 import FormGroup from "../FormGroup";
 import {
   EMAIL_PATTERN,
@@ -18,79 +17,82 @@ import {
 } from "../../../utils/constants/validation/validation-messages";
 
 import "./index.css"
-import {useDispatch} from "react-redux";
-import {createUser} from "../../../actions/user";
 
-export default function SignUpForm() {
+export default function SignUpForm({handleSubmit, register, errors, passwordsMatch}) {
 
-  const {handleSubmit, register, errors} = useForm();
-
-  const [passwordsMatch, setPasswordsMatch] = useState(true);
-
-  const dispatch = useDispatch();
-
-
-  const onSubmit = (data) => {
-    const {password, repeatedPassword} = data;
-    if (password === repeatedPassword) {
-      dispatch(createUser(data));
-    } else {
-      setPasswordsMatch(false)
-    }
-  }
+  const {firstName, lastName, login, email, password} = errors;
 
   return (
     <>
       <h1 className={'home-link'}>
         <Link to={'/'}>Dicter</Link>
       </h1>
-      <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="sign-up-form" onSubmit={handleSubmit}>
         <p>Sign up</p>
 
         <FormGroup
-          labelName={"First name"} inputName={"firstName"}
+          labelName={"First name"}
+          inputName={"firstName"}
           inputType={"text"}
-          register={register} error={errors.firstName} isRequired
+          register={register}
+          error={firstName}
           inputPattern={NAME_PATTERN}
           invalidDataMessage={INVALID_FIRST_NAME_MESSAGE}
+          isRequired
         />
         <FormGroup
-          labelName={"Last name"} inputName={"lastName"} inputType={"text"}
-          register={register} error={errors.lastName} isRequired
+          labelName={"Last name"}
+          inputName={"lastName"}
+          inputType={"text"}
+          register={register}
+          error={lastName}
           inputPattern={NAME_PATTERN}
           invalidDataMessage={INVALID_LAST_NAME_MESSAGE}
+          isRequired
         />
         <FormGroup
-          labelName={"Login"} inputName={"login"} inputType={"text"}
-          register={register} error={errors.login} isRequired
+          labelName={"Login"}
+          inputName={"login"}
+          inputType={"text"}
+          register={register}
+          error={login}
           inputPattern={LOGIN_PATTERN}
           invalidDataMessage={INVALID_LOGIN_MESSAGE}
+          isRequired
         />
         <FormGroup
-          labelName={"Email"} inputName={"email"} inputType={"email"}
-          register={register} error={errors.email} isRequired={false}
+          labelName={"Email"}
+          inputName={"email"}
+          inputType={"email"}
+          register={register}
+          error={email}
           inputPattern={EMAIL_PATTERN}
           invalidDataMessage={INVALID_EMAIL_MESSAGE}
+          isRequired={false}
         />
         <FormGroup
-          labelName={"Password"} inputName={"password"}
+          labelName={"Password"}
+          inputName={"password"}
           inputType={"password"}
-          register={register} error={errors.password}
-          isRequired inputPattern={PASSWORD_PATTERN}
+          register={register}
+          error={password}
+          inputPattern={PASSWORD_PATTERN}
           invalidDataMessage={INVALID_PASSWORD_MESSAGE}
+          isRequired
         />
         <FormGroup
-          labelName={"Repeat password"} inputName={"repeatedPassword"}
-          inputType={"password"} isRequired register={register}
+          labelName={"Repeat password"}
+          inputName={"repeatedPassword"}
+          inputType={"password"}
+          register={register}
+          isRequired
         />
         <div className="small text-danger">
           {passwordsMatch ? "" : INVALID_REPEATED_PASSWORD_MESSAGE}
         </div>
 
         <div className="sign-up-button-wrapper">
-          <button
-            type="submit"
-            className='btn btn-primary btn-raised'>
+          <button type="submit" className='btn btn-primary btn-raised'>
             Sign up
           </button>
         </div>

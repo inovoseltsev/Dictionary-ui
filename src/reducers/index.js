@@ -4,5 +4,5 @@ import userReducer from "./userReducer";
 import termGroupReducer from "./termGroupReducer";
 
 export default combineReducers({
-  authReducer, userReducer, wordSetReducer: termGroupReducer
+  authReducer, userReducer, termGroupReducer
 })

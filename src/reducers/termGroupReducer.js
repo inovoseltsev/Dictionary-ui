@@ -6,7 +6,7 @@ import {
 } from "../utils/constants/action-types/termGroup";
 
 const initialState = {
-  wordSets: [],
+  termGroups: [],
   status: IDLE,
   error: null
 };
@@ -24,7 +24,7 @@ export default function termGroupReducer(state = initialState, action) {
     case GET_TERM_GROUPS_SUCCESS:
       return {
         ...state,
-        wordSets: action.payload,
+        termGroups: action.payload,
         error: null,
         status: SUCCEED
       }

@@ -12,6 +12,6 @@ export async function create(user) {
 export async function getById(id) {
   return await createApiCall({
     url: API_V1_URL + `users/${id}/`,
-    tokenRequired: true,
+    tokenRequired: true
   });
 }
