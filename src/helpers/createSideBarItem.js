@@ -1,10 +1,9 @@
-export default function createNewItem(id, route, name, className = "", onClick = () => {
+export default function createNewItem(id, route, name, onClick = () => {
 }) {
   return {
     id,
     route,
     name,
-    className,
     onClick
   }
 }

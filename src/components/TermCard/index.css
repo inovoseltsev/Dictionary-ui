@@ -1,9 +1,12 @@
 .term-card {
-    width: 320px;
-    height: 156px;
+    width: 30%;
+    height: 145px;
+    max-width: 320px;
 }
 
 .term-card .MuiIconButton-root {
-    width: 45px !important;
+    width: 45px;
+    height: 45px;
     border-radius: 50% !important;
+    margin-left: auto;
 }

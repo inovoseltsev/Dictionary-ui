@@ -1,0 +1,8 @@
+.content-row {
+    display: flex;
+    margin-top: 30px;
+}
+
+.content-row div {
+    margin-left: 3%;
+}

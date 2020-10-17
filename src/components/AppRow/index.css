@@ -1,15 +1,19 @@
 .app-row {
     display: flex;
     height: 80vh;
-    width: 50vw;
+    width: 55vw;
     justify-content: space-between;
     margin: 75px auto auto auto;
+    min-width: 1265px;
+    max-width: 1408px;
 }
 
 .app-row .left {
     border-radius: .25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
     0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    width: 21%;
+    background-color: #ffffff;
 }
 
 .app-row .left .bg-light {
@@ -20,14 +24,30 @@
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
     0 2px 10px 0 rgba(0, 0, 0, 0.12);
     border-radius: .25rem;
-}
-
-.app-row .left {
-    width: 19%;
-    background-color: #ffffff;
-}
-
-.app-row .right {
-    width: 80%;
+    width: 78%;
     background-color: #f6f7fb;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-row .right .content-wrapper {
+    overflow-y: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    height: 100%;
+    padding: 10px;
+}
+
+.app-row .controls {
+    display: flex;
+    padding: 10px;
+}
+
+.app-row .right .MuiFab-root {
+    border-radius: 50% !important;
+    margin-left: auto;
+}
+
+.app-row .right .content-wrapper::-webkit-scrollbar {
+    background-color: transparent;
 }

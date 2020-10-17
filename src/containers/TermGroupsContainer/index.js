@@ -1,12 +1,10 @@
 import React from "react";
 
-import "./index.css"
 import {useSelector} from "react-redux";
-import TermGroupCard from "../TermGroupAddCard";
-import TermCard from "../../TermCard";
-import AddCard from "../../AddCard";
+import TermCard from "../../components/TermCard";
+import ContentRow from "../../components/ContentRow";
 
-export default function TermGroupsPlaceholder() {
+export default function TermGroupsContainer() {
 
   const {termGroups} = useSelector(state => state.termGroupReducer);
 
@@ -29,11 +27,17 @@ export default function TermGroupsPlaceholder() {
   }
 
   return (
-    <div className="word-sets-placeholder">
-      {termGroups.map(termGroup => <TermGroupCard key={termGroup.id}/>)}
-      <TermCard/>
-      {/*<TermGroupCard isAddCard/>*/}
-      <AddCard/>
+    <div>
+      {termGroups.map(termGroup => <ContentRow
+        key={termGroup.id}
+        leftCard={<TermCard/>}
+        rightCard={<TermCard/>}
+      />)}
+      <ContentRow
+        leftCard={<TermCard/>}
+        middleCard={<TermCard/>}
+        rightCard={<TermCard/>}
+      />
     </div>
   );
 }

@@ -1,10 +1,10 @@
-.home-menu {
+.start-menu {
     height: 400px;
     margin: 0 auto;
     padding-top: 14%
 }
 
-.home-menu h1 {
+.start-menu h1 {
     color: #fbfbfd;
     font-size: 60px;
     text-align: center;
@@ -12,7 +12,7 @@
     font-weight: 400;
 }
 
-.home-menu p {
+.start-menu p {
     color: #fbfbfd;
     font-size: 45px;
     text-align: center;
@@ -20,9 +20,26 @@
     font-weight: 200;
 }
 
-.home-menu .control-buttons {
+.start-menu .start-menu-buttons {
     display: flex;
     width: 350px;
     justify-content: space-between;
     margin: 10vh auto auto auto;
+}
+
+.start-menu-buttons button {
+    width: 125px;
+    height: 45px;
+    border: 1px solid #fbfbfd;
+    border-radius: .25rem !important;
+    background-color: transparent;
+    color: #fbfbfd;
+    font-weight: 300;
+    transition: 0.3s;
+}
+
+.start-menu-buttons button:hover {
+    background-color: #fbfbfd;
+    color: #2daee5;
+    cursor: pointer;
 }
