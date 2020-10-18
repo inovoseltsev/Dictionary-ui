@@ -1,0 +1,9 @@
+.app-card {
+    width: 30%;
+    height: 145px;
+    max-width: 320px;
+}
+
+.app-card .MuiIconButton-root {
+    margin-left: auto;
+}

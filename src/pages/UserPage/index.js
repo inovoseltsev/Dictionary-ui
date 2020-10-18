@@ -1,7 +1,7 @@
 import React from "react";
 import {Switch} from "react-router";
 import {useSelector} from "react-redux";
-import PrivateRoute from "../../components/PrivateRoute";
+import PrivateRoute from "../../components/generic/PrivateRoute";
 import AppRow from "../../components/AppRow";
 import TermGroupsContainer from "../../containers/TermGroupsContainer";
 

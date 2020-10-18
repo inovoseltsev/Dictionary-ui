@@ -6,6 +6,11 @@ import {
 } from "../utils/constants/action-types/termGroup";
 
 const initialState = {
+  termGroup: {
+    id: 0,
+    name: "",
+    description: "",
+  },
   termGroups: [],
   status: IDLE,
   error: null
@@ -18,8 +23,8 @@ export default function termGroupReducer(state = initialState, action) {
     case GET_TERM_GROUPS_REQUEST:
       return {
         ...state,
-        status: LOADING,
-        error: null
+        error: null,
+        status: LOADING
       }
     case GET_TERM_GROUPS_SUCCESS:
       return {
@@ -34,7 +39,6 @@ export default function termGroupReducer(state = initialState, action) {
         error: action.payload,
         status: FAILED
       }
-
     default:
       return state;
   }

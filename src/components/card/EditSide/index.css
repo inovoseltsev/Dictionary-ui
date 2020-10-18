@@ -1,0 +1,19 @@
+.edit-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-fields .MuiFilledInput-root {
+    background-color: transparent;
+}
+
+.edit-fields input {
+    padding: 4px;
+}
+
+/*.edit-card .MuiIconButton-root {*/
+/*    width: 45px;*/
+/*    height: 45px;*/
+/*    border-radius: 50% !important;*/
+/*    margin-left: auto;*/
+/*}*/

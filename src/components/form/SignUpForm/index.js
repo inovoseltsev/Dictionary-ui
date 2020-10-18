@@ -17,6 +17,7 @@ import {
 } from "../../../utils/constants/validation/validation-messages";
 
 import "./index.css"
+import AppHeader from "../../generic/AppHeader";
 
 export default function SignUpForm({handleSubmit, register, errors, passwordsMatch}) {
 
@@ -24,16 +25,14 @@ export default function SignUpForm({handleSubmit, register, errors, passwordsMat
 
   return (
     <>
-      <h1 className={'home-link'}>
-        <Link to={'/'}>Dicter</Link>
-      </h1>
       <form className="sign-up-form" onSubmit={handleSubmit}>
+        <AppHeader linkTo="/"/>
         <p>Sign up</p>
 
         <FormGroup
-          labelName={"First name"}
-          inputName={"firstName"}
-          inputType={"text"}
+          labelName="First name"
+          inputName="firstName"
+          inputType="text"
           register={register}
           error={firstName}
           inputPattern={NAME_PATTERN}
@@ -41,9 +40,9 @@ export default function SignUpForm({handleSubmit, register, errors, passwordsMat
           isRequired
         />
         <FormGroup
-          labelName={"Last name"}
-          inputName={"lastName"}
-          inputType={"text"}
+          labelName="Last name"
+          inputName="lastName"
+          inputType="text"
           register={register}
           error={lastName}
           inputPattern={NAME_PATTERN}
@@ -51,9 +50,9 @@ export default function SignUpForm({handleSubmit, register, errors, passwordsMat
           isRequired
         />
         <FormGroup
-          labelName={"Login"}
-          inputName={"login"}
-          inputType={"text"}
+          labelName="Login"
+          inputName="login"
+          inputType="text"
           register={register}
           error={login}
           inputPattern={LOGIN_PATTERN}
@@ -61,9 +60,9 @@ export default function SignUpForm({handleSubmit, register, errors, passwordsMat
           isRequired
         />
         <FormGroup
-          labelName={"Email"}
-          inputName={"email"}
-          inputType={"email"}
+          labelName="Email"
+          inputName="email"
+          inputType="email"
           register={register}
           error={email}
           inputPattern={EMAIL_PATTERN}
@@ -71,9 +70,9 @@ export default function SignUpForm({handleSubmit, register, errors, passwordsMat
           isRequired={false}
         />
         <FormGroup
-          labelName={"Password"}
-          inputName={"password"}
-          inputType={"password"}
+          labelName="Password"
+          inputName="password"
+          inputType="password"
           register={register}
           error={password}
           inputPattern={PASSWORD_PATTERN}
@@ -81,9 +80,9 @@ export default function SignUpForm({handleSubmit, register, errors, passwordsMat
           isRequired
         />
         <FormGroup
-          labelName={"Repeat password"}
-          inputName={"repeatedPassword"}
-          inputType={"password"}
+          labelName="Repeat password"
+          inputName="repeatedPassword"
+          inputType="password"
           register={register}
           isRequired
         />
@@ -92,13 +91,13 @@ export default function SignUpForm({handleSubmit, register, errors, passwordsMat
         </div>
 
         <div className="sign-up-button-wrapper">
-          <button type="submit" className='btn btn-primary btn-raised'>
+          <button type="submit" className="btn btn-primary btn-raised">
             Sign up
           </button>
         </div>
 
         <div className="sign-in-message-wrapper">
-          <p>Have an account? <Link to={"/sign-in"}>Sign in</Link></p>
+          <p>Have an account? <Link to="/sign-in">Sign in</Link></p>
         </div>
       </form>
     </>

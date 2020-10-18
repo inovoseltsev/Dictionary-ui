@@ -1,0 +1,12 @@
+.default-card-content .MuiTypography-root {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+}
+
+/*.app-card .MuiIconButton-root {*/
+/*    width: 45px;*/
+/*    height: 45px;*/
+/*    border-radius: 50% !important;*/
+/*    margin-left: auto;*/
+/*}*/

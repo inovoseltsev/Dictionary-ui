@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import TextField from "@material-ui/core/TextField";
+import TextField from "../../generic/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
@@ -57,7 +57,7 @@ export default function FormGroup(props) {
         onClick={onClick}
         InputProps={passwordFieldProps}
         inputRef={inputRef}
-        variant={"filled"}
+        variant="filled"
       />
       <div className="small text-danger">
         {error && error.message}

@@ -1,0 +1,16 @@
+.app-header {
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.link-to {
+    font-style: italic;
+    font-weight: 200;
+    font-size: 40px;
+    text-decoration: none !important;
+    color: #2daee5;
+}
+
+.link-to:hover {
+    color: #199acb;
+}

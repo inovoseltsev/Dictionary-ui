@@ -1,8 +1,8 @@
 import React from "react";
 
 import {useSelector} from "react-redux";
-import TermCard from "../../components/TermCard";
 import ContentRow from "../../components/ContentRow";
+import CardContainer from "../../components/card/CardContainer";
 
 export default function TermGroupsContainer() {
 
@@ -28,15 +28,11 @@ export default function TermGroupsContainer() {
 
   return (
     <div>
-      {termGroups.map(termGroup => <ContentRow
-        key={termGroup.id}
-        leftCard={<TermCard/>}
-        rightCard={<TermCard/>}
-      />)}
       <ContentRow
-        leftCard={<TermCard/>}
-        middleCard={<TermCard/>}
-        rightCard={<TermCard/>}
+        leftCard={<CardContainer name={"name"}
+                                 description={"description description description description description description"}/>}
+        middleCard={<CardContainer name={"name"} description={"description"}/>}
+        rightCard={<CardContainer name={"name"} description={"description"}/>}
       />
     </div>
   );
