@@ -1,7 +1,15 @@
 import createApiCall, {API_V1_URL} from "../helpers/createApiCall";
 
-export async function getByUserId(id) {
+const DEFAULT_URL = "term-groups/";
+
+export async function getById(id) {
   return await createApiCall({
-    url: API_V1_URL
+    url: API_V1_URL + DEFAULT_URL + `${id}/`
+  });
+}
+
+export async function getAllByUserId(id) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `users/${id}/`
   });
 }

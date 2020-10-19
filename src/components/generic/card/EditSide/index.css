@@ -3,6 +3,14 @@
     flex-direction: column;
 }
 
+.edit-fields form {
+    margin: 0 auto;
+}
+
+.edit-fields .MuiFormControl-root {
+    width: 100%;
+}
+
 .edit-fields .MuiFilledInput-root {
     background-color: transparent;
 }
@@ -10,10 +18,3 @@
 .edit-fields input {
     padding: 4px;
 }
-
-/*.edit-card .MuiIconButton-root {*/
-/*    width: 45px;*/
-/*    height: 45px;*/
-/*    border-radius: 50% !important;*/
-/*    margin-left: auto;*/
-/*}*/

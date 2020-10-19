@@ -3,10 +3,10 @@ import MaterialIconButton from "@material-ui/core/IconButton"
 
 import "./index.css"
 
-export default function IconButton({icon, onClick, size}) {
+export default function IconButton({icon, onClick, size, type = "button"}) {
 
   return (
-    <MaterialIconButton size={size} onClick={onClick} className="icon-button">
+    <MaterialIconButton className="icon-button" size={size} onClick={onClick} type={type}>
       {icon}
     </MaterialIconButton>
   )

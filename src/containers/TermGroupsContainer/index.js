@@ -1,39 +1,47 @@
-import React from "react";
-
-import {useSelector} from "react-redux";
-import ContentRow from "../../components/ContentRow";
-import CardContainer from "../../components/card/CardContainer";
+import React, {useEffect} from "react";
+import CardsRow from "../../components/CardsRow";
+import AppCard from "../../components/generic/card/AppCard";
 
 export default function TermGroupsContainer() {
 
-  const {termGroups} = useSelector(state => state.termGroupReducer);
+  // const {termGroups} = useSelector(state => state.termGroupReducer);
+  const termGroups = [
+    {id: 0, name: "name", description: "desc"},
+    {id: 1, name: "name", description: "desc"},
+    {id: 2, name: "name", description: "desc"}
+  ];
 
   const createRows = (termGroups) => {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
     let subArr = [];
     const result = [];
-
-    arr.forEach(el => {
+    const lastEl = termGroups[termGroups.length - 1];
+    termGroups.forEach(el => {
       subArr.push(el);
-      if (subArr.length === 3) {
+      if (subArr.length === 3 || el === lastEl) {
         result.push(subArr);
         subArr = [];
       }
     });
-    if (subArr.length !== 0) {
-      result.push(subArr);
-    }
-    console.log(result);
+    return result;
+  }
+
+  const rows = createRows(termGroups);
+  useEffect(() => {
+    console.log(createRows(termGroups));
+  })
+
+  const onChangesApply = (data) => {
+    console.log(data);
   }
 
   return (
     <div>
-      <ContentRow
-        leftCard={<CardContainer name={"name"}
-                                 description={"description description description description description description"}/>}
-        middleCard={<CardContainer name={"name"} description={"description"}/>}
-        rightCard={<CardContainer name={"name"} description={"description"}/>}
-      />
+      {rows.map(arr =>
+        <CardsRow key={0} cards={arr.map(el =>
+          <AppCard key={el.id} id={el.id}
+                   name={el.name} content={el.description} onChangesApply={onChangesApply}
+          />)}
+        />)}
     </div>
   );
 }

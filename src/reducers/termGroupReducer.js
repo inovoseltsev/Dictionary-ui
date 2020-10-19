@@ -1,8 +1,8 @@
 import {FAILED, IDLE, LOADING, SUCCEED} from "../helpers/requestStatus";
 import {
-  GET_TERM_GROUPS_FAILURE,
-  GET_TERM_GROUPS_REQUEST,
-  GET_TERM_GROUPS_SUCCESS
+  GET_TERM_GROUPS_BY_USER_ID_FAILURE,
+  GET_TERM_GROUPS_BY_USER_ID_REQUEST,
+  GET_TERM_GROUPS_BY_USER_ID_SUCCESS
 } from "../utils/constants/action-types/termGroup";
 
 const initialState = {
@@ -20,20 +20,20 @@ export default function termGroupReducer(state = initialState, action) {
 
   switch (action.type) {
 
-    case GET_TERM_GROUPS_REQUEST:
+    case GET_TERM_GROUPS_BY_USER_ID_REQUEST:
       return {
         ...state,
         error: null,
         status: LOADING
       }
-    case GET_TERM_GROUPS_SUCCESS:
+    case GET_TERM_GROUPS_BY_USER_ID_SUCCESS:
       return {
         ...state,
         termGroups: action.payload,
         error: null,
         status: SUCCEED
       }
-    case GET_TERM_GROUPS_FAILURE:
+    case GET_TERM_GROUPS_BY_USER_ID_FAILURE:
       return {
         ...state,
         error: action.payload,

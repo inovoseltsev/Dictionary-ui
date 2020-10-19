@@ -1,6 +1,11 @@
+.form-group .MuiFormControl-root {
+    width: 100%;
+}
+
 .form-group .MuiFilledInput-root {
     background-color: transparent;
 }
+
 .text-danger {
     margin-top: 2px;
 }

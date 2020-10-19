@@ -49,7 +49,6 @@ export default function FormGroup(props) {
   return (
     <div className="form-group">
       <TextField
-        style={{width: "100%"}}
         name={inputName}
         id={inputName}
         type={showPassword ? "text" : inputType}

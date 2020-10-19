@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 
 import "./index.css"
-import IconButton from "../../generic/IconButton";
+import IconButton from "../../IconButton";
 import {Delete, Edit} from "@material-ui/icons";
 
 export default function ContentSide({name, description, onEdit, onDelete}) {
