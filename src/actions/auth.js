@@ -42,8 +42,8 @@ export const refreshUser = () => async (dispatch) => {
   try {
     const tokenData = jwt(localStorage.getItem("token"));
     const user = await userService.getById(tokenData.sub);
-    dispatch(loginSuccess(tokenData));
     dispatch(getUserSuccess(user));
+    dispatch(loginSuccess(tokenData));
   } catch (error) {
     dispatch(logoutUser());
   }

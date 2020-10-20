@@ -16,13 +16,11 @@ export default function AppRow({sideBar = <SideBarContainer/>, content}) {
         <div className="content-wrapper">
           {content}
         </div>
-
         <div className="controls">
           <Fab color="primary" aria-label="add">
             <Add fontSize={"small"}/>
           </Fab>
         </div>
-
       </div>
     </div>
   )

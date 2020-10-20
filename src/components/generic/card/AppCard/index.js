@@ -21,7 +21,7 @@ export default function AppCard({name, content, onDelete, onChangesApply, id}) {
           name={name}
           description={content}
           onEdit={() => setEditable(true)}
-          onDelete={onDelete}
+          onDelete={() => onDelete(id)}
         />
         :
         <EditSide
