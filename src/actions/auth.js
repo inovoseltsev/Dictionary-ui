@@ -9,13 +9,6 @@ import * as userService from "../services/userService"
 import jwt from "jwt-decode";
 import {getUserSuccess} from "./user";
 
-export const loginError = (error) => {
-  return {
-    type: LOGIN_USER_FAILURE,
-    payload: error
-  };
-}
-
 export const loginSuccess = (authObject) => {
   const {sub, role, iat, exp} = authObject;
   const authData = {userId: sub, role, createdAt: iat, exp};
@@ -23,6 +16,13 @@ export const loginSuccess = (authObject) => {
     type: LOGIN_USER_SUCCESS,
     payload: authData
   }
+}
+
+export const loginError = (error) => {
+  return {
+    type: LOGIN_USER_FAILURE,
+    payload: error
+  };
 }
 
 export const loginUser = (credentials) => async (dispatch) => {

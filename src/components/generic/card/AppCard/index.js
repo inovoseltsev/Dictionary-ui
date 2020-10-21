@@ -5,11 +5,11 @@ import Card from "@material-ui/core/Card";
 
 import "./index.css"
 
-export default function AppCard({name, content, onDelete, onChangesApply, id}) {
+export default function AppCard({head, content, onDelete, onChangesApply, id, about}) {
 
   const [isEditable, setEditable] = useState(false);
 
-  const onApply = (data) => {
+  const onEditApply = (data) => {
     setEditable(false);
     onChangesApply({cardId: id, ...data});
   }
@@ -18,16 +18,17 @@ export default function AppCard({name, content, onDelete, onChangesApply, id}) {
     <Card className="app-card">
       {!isEditable ?
         <ContentSide
-          name={name}
-          description={content}
+          name={head}
+          content={content}
           onEdit={() => setEditable(true)}
           onDelete={() => onDelete(id)}
+          dialogAbout={about}
         />
         :
         <EditSide
-          name={name}
+          name={head}
           description={content}
-          onApply={onApply}
+          onApply={onEditApply}
           onCancel={() => setEditable(false)}
         />
       }

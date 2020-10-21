@@ -12,14 +12,14 @@ import {
 
 import * as termGroupService from "../services/termGroupService"
 
-export function getUserTermGroupsSuccess(termGroups) {
+export const getUserTermGroupsSuccess = (termGroups) => {
   return {
     type: GET_TERM_GROUPS_BY_USER_ID_SUCCESS,
     payload: termGroups
   };
 }
 
-export function getUserTermGroupsError(error) {
+export const getUserTermGroupsError = (error) => {
   return {
     type: GET_TERM_GROUPS_BY_USER_ID_FAILURE,
     payload: error
@@ -36,7 +36,7 @@ export const getUserTermGroups = (id) => async (dispatch) => {
   }
 }
 
-export function updateTermGroupSuccess(termGroup, termGroups) {
+export const updateTermGroupSuccess = (termGroup, termGroups) => {
   const updatedGroups = termGroups.map(el => el.id === termGroup.id ? termGroup : el);
   return {
     type: UPDATE_TERM_GROUP_SUCCESS,
@@ -47,7 +47,7 @@ export function updateTermGroupSuccess(termGroup, termGroups) {
   };
 }
 
-export function updateTermGroupError(error) {
+export const updateTermGroupError = (error) => {
   return {
     type: UPDATE_TERM_GROUP_FAILURE,
     payload: error
@@ -64,7 +64,7 @@ export const updateTermGroup = (termGroupData, termGroups) => async (dispatch) =
   }
 }
 
-export function deleteTermGroupSuccess(groupId, termGroups) {
+export const deleteTermGroupSuccess = (groupId, termGroups) => {
   const updatedGroups = termGroups.filter(el => el.id !== groupId);
   return {
     type: DELETE_TERM_GROUP_SUCCESS,
@@ -72,7 +72,7 @@ export function deleteTermGroupSuccess(groupId, termGroups) {
   }
 }
 
-export function deleteTermGroupError(error) {
+export const deleteTermGroupError = (error) => {
   return {
     type: DELETE_TERM_GROUP_FAILURE,
     payload: error

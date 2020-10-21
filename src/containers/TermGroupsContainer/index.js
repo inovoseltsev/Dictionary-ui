@@ -8,6 +8,8 @@ import {
   updateTermGroup
 } from "../../actions/termGroup";
 import createCardRows from "../../helpers/createCardRows";
+import {LOADING} from "../../helpers/requestStatus";
+import Spinner from "../../components/Spinner";
 
 export default function TermGroupsContainer() {
 
@@ -29,14 +31,16 @@ export default function TermGroupsContainer() {
   }
 
   return (
+    status === LOADING ? <Spinner/> :
     <div>
       {rows.map(row =>
         <CardsRow key={row.id} cards={row.data.map(el =>
           <AppCard key={el.id} id={el.id}
-                   name={el.name}
+                   head={el.name}
                    content={el.description}
                    onChangesApply={onChangesApply}
                    onDelete={onGroupDelete}
+                   about="group"
           />)}
         />)}
     </div>
