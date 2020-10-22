@@ -8,7 +8,11 @@
     border-radius: .25rem;
 }
 
-.sign-up-form .form-group label {
+.sign-up-form .form-input {
+    margin-bottom: 1rem;
+}
+
+.sign-up-form .form-input label {
     font-size: 15px;
 }
 

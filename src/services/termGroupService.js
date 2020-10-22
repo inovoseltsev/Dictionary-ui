@@ -14,6 +14,14 @@ export async function getAllByUserId(id) {
   });
 }
 
+export async function createForUser(termGroup) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + "users",
+    method: "POST",
+    data: termGroup
+  });
+}
+
 export async function update(termGroupData) {
   const {cardId, name, content} = termGroupData;
   const termGroup = {name, description: content};

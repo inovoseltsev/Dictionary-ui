@@ -1,5 +1,8 @@
 import {FAILED, IDLE, LOADING, SUCCEED} from "../helpers/requestStatus";
 import {
+  CREATE_TERM_GROUP_FOR_USER_FAILURE,
+  CREATE_TERM_GROUP_FOR_USER_REQUEST,
+  CREATE_TERM_GROUP_FOR_USER_SUCCESS,
   DELETE_TERM_GROUP_FAILURE,
   DELETE_TERM_GROUP_REQUEST,
   DELETE_TERM_GROUP_SUCCESS,
@@ -42,6 +45,28 @@ export default function termGroupReducer(state = initialState, action) {
       }
 
     case GET_TERM_GROUPS_BY_USER_ID_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        status: FAILED
+      }
+
+    case CREATE_TERM_GROUP_FOR_USER_REQUEST:
+      return {
+        ...state,
+        error: null,
+        status: LOADING
+      }
+
+    case CREATE_TERM_GROUP_FOR_USER_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        error: null,
+        status: SUCCEED
+      }
+
+    case CREATE_TERM_GROUP_FOR_USER_FAILURE:
       return {
         ...state,
         error: action.payload,

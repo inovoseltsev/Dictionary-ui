@@ -30,13 +30,11 @@ export const loginUser = (credentials) => async (dispatch) => {
   try {
     const token = await authService.login(credentials);
     localStorage.setItem("token", token);
-    const tokenData = jwt(token);
-    dispatch(loginSuccess(tokenData));
+    dispatch(refreshUser());
   } catch (error) {
     dispatch(loginError({error}));
   }
 }
-
 
 export const refreshUser = () => async (dispatch) => {
   try {

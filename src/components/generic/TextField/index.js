@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import MaterialTextField from "@material-ui/core/TextField"
+import MuiTextField from "@material-ui/core/TextField"
 
 export default function TextField(props) {
 
@@ -15,7 +15,7 @@ export default function TextField(props) {
   }
 
   return (
-    <MaterialTextField
+    <MuiTextField
       name={name}
       type={type}
       id={id}

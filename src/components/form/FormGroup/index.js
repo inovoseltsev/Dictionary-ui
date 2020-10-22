@@ -9,9 +9,9 @@ import "./index.css"
 export default function FormGroup(props) {
 
   const {
-    inputType, inputName, isRequired,
-    inputPattern, invalidDataMessage,
-    labelName, register, error, onClick
+    inputType = "text", inputName, isRequired,
+    inputPattern, invalidDataMessage, labelName,
+    register, error, onClick, variant = "filled", value
   } = props;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -47,7 +47,7 @@ export default function FormGroup(props) {
   }
 
   return (
-    <div className="form-group">
+    <div className="form-input">
       <TextField
         name={inputName}
         id={inputName}
@@ -56,7 +56,8 @@ export default function FormGroup(props) {
         onClick={onClick}
         InputProps={passwordFieldProps}
         inputRef={inputRef}
-        variant="filled"
+        variant={variant}
+        value={value}
       />
       <div className="small text-danger">
         {error && error.message}

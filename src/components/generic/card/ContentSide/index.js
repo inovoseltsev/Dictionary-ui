@@ -3,14 +3,19 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
 
-import IconButton from "../../IconButton";
+import IconButton from "../../button/IconButton";
 import {Delete, Edit} from "@material-ui/icons";
 import DeleteDialog from "../../Dialog";
 import "./index.css"
 
 export default function ContentSide({name, content, onEdit, onDelete, dialogAbout}) {
 
-  const [isDialogOpen, setOpen] = useState(false);
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
+  const onAcceptDialog = () => {
+    onDelete();
+    setDialogOpen(false);
+  }
 
   return (
     <>
@@ -23,23 +28,17 @@ export default function ContentSide({name, content, onEdit, onDelete, dialogAbou
         </Typography>
       </CardContent>
       <CardActions>
-        <IconButton
-          size="small"
-          icon={<Edit fontSize="small"/>}
-          onClick={onEdit}
-        />
-        <IconButton
-          size="small"
-          icon={<Delete fontSize="small"/>}
-          onClick={() => setOpen(true)}
-        />
+        <IconButton icon={<Edit fontSize="small"/>} onClick={onEdit}/>
+        <IconButton icon={<Delete fontSize="small"/>}
+                    onClick={() => setDialogOpen(true)}/>
       </CardActions>
+
       <DeleteDialog isOpened={isDialogOpen}
                     title={`Delete ${dialogAbout}?`}
-                    content="You wil not have opportunity to restore it"
-                    onClose={() => setOpen(false)}
-                    onAccept={onDelete}
-      />
+                    onClose={() => setDialogOpen(false)}
+                    onAccept={onAcceptDialog}>
+        <p>You will not have opportunity to restore it</p>
+      </DeleteDialog>
     </>
   );
 }

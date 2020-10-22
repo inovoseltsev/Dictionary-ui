@@ -1,8 +1,8 @@
-.form-group .MuiFormControl-root {
+.form-input .MuiFormControl-root {
     width: 100%;
 }
 
-.form-group .MuiFilledInput-root {
+.form-input .MuiFilledInput-root {
     background-color: transparent;
 }
 

@@ -8,9 +8,9 @@ export default function StartPage() {
 
   return (
     <Switch>
-      <Route path={"/"} component={StartMenu} exact/>
-      <Route path={"/sign-in"} component={SignInFormContainer}/>
-      <Route path={"/sign-up"} component={SignUpFormContainer}/>
+      <Route path="/" component={StartMenu} exact/>
+      <Route path="/sign-in" component={SignInFormContainer}/>
+      <Route path="/sign-up" component={SignUpFormContainer}/>
     </Switch>
   );
 }

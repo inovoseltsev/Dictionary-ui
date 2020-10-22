@@ -1,4 +1,7 @@
 import {
+  CREATE_TERM_GROUP_FOR_USER_FAILURE,
+  CREATE_TERM_GROUP_FOR_USER_REQUEST,
+  CREATE_TERM_GROUP_FOR_USER_SUCCESS,
   DELETE_TERM_GROUP_FAILURE,
   DELETE_TERM_GROUP_REQUEST,
   DELETE_TERM_GROUP_SUCCESS,
@@ -36,14 +39,37 @@ export const getUserTermGroups = (id) => async (dispatch) => {
   }
 }
 
+export const createUserTermGroupSuccess = (termGroup, termGroups) => {
+  const updatedGroups = [...termGroups];
+  updatedGroups.push(termGroup);
+  return {
+    type: CREATE_TERM_GROUP_FOR_USER_SUCCESS,
+    payload: {termGroups: updatedGroups, termGroup}
+  }
+}
+
+export const createUserTermGroupError = (error) => {
+  return {
+    type: CREATE_TERM_GROUP_FOR_USER_FAILURE,
+    payload: error
+  }
+}
+
+export const createUserTermGroup = (termGroup, termGroups) => async (dispatch) => {
+  dispatch({type: CREATE_TERM_GROUP_FOR_USER_REQUEST});
+  try {
+    const result = await termGroupService.createForUser(termGroup);
+    dispatch(createUserTermGroupSuccess(result, termGroups));
+  } catch (error) {
+    dispatch(createUserTermGroupError({error}));
+  }
+}
+
 export const updateTermGroupSuccess = (termGroup, termGroups) => {
   const updatedGroups = termGroups.map(el => el.id === termGroup.id ? termGroup : el);
   return {
     type: UPDATE_TERM_GROUP_SUCCESS,
-    payload: {
-      termGroup,
-      termGroups: updatedGroups
-    }
+    payload: {termGroups: updatedGroups, termGroup}
   };
 }
 
