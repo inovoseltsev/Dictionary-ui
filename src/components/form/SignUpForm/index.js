@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import FormGroup from "../FormGroup";
+import Input from "../../shared/Input";
 import {
   EMAIL_PATTERN,
   LOGIN_PATTERN,
@@ -17,89 +17,109 @@ import {
 } from "../../../utils/constants/validation/validation-messages";
 
 import "./index.css"
-import AppHeader from "../../generic/AppHeader";
+import AppHeader from "../../shared/AppHeader";
+import {useDispatch, useSelector} from "react-redux";
+import {useForm} from "react-hook-form";
+import {createUser} from "../../../actions/user";
+import {LOADING} from "../../../helpers/requestStatus";
+import Spinner from "../../Spinner";
 
-export default function SignUpForm({handleSubmit, register, errors, passwordsMatch}) {
+export default function SignUpForm() {
 
+  const dispatch = useDispatch();
+  const {status} = useSelector(state => state.userReducer);
+  const {handleSubmit, register, errors} = useForm();
   const {firstName, lastName, login, email, password} = errors;
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+
+  const onSubmit = (data) => {
+    const {password, repeatedPassword} = data;
+    if (password === repeatedPassword) {
+      const user = {...data, role: "USER"};
+      dispatch(createUser(user));
+    } else {
+      setPasswordsMatch(false)
+    }
+  }
 
   return (
-    <>
-      <form className="sign-up-form" onSubmit={handleSubmit}>
-        <AppHeader linkTo="/"/>
-        <p>Sign up</p>
+    status === LOADING ? <Spinner/> :
+      <>
+        <form className="form sign-up-form" onSubmit={handleSubmit(onSubmit)}>
+          <AppHeader linkTo="/"/>
+          <p className="form-title">Sign up</p>
 
-        <FormGroup
-          labelName="First name"
-          inputName="firstName"
-          inputType="text"
-          register={register}
-          error={firstName}
-          inputPattern={NAME_PATTERN}
-          invalidDataMessage={INVALID_FIRST_NAME_MESSAGE}
-          isRequired
-        />
-        <FormGroup
-          labelName="Last name"
-          inputName="lastName"
-          inputType="text"
-          register={register}
-          error={lastName}
-          inputPattern={NAME_PATTERN}
-          invalidDataMessage={INVALID_LAST_NAME_MESSAGE}
-          isRequired
-        />
-        <FormGroup
-          labelName="Login"
-          inputName="login"
-          inputType="text"
-          register={register}
-          error={login}
-          inputPattern={LOGIN_PATTERN}
-          invalidDataMessage={INVALID_LOGIN_MESSAGE}
-          isRequired
-        />
-        <FormGroup
-          labelName="Email"
-          inputName="email"
-          inputType="email"
-          register={register}
-          error={email}
-          inputPattern={EMAIL_PATTERN}
-          invalidDataMessage={INVALID_EMAIL_MESSAGE}
-          isRequired={false}
-        />
-        <FormGroup
-          labelName="Password"
-          inputName="password"
-          inputType="password"
-          register={register}
-          error={password}
-          inputPattern={PASSWORD_PATTERN}
-          invalidDataMessage={INVALID_PASSWORD_MESSAGE}
-          isRequired
-        />
-        <FormGroup
-          labelName="Repeat password"
-          inputName="repeatedPassword"
-          inputType="password"
-          register={register}
-          isRequired
-        />
-        <div className="small text-danger">
-          {passwordsMatch ? "" : INVALID_REPEATED_PASSWORD_MESSAGE}
-        </div>
+          <Input
+            labelName="First name"
+            name="firstName"
+            type="text"
+            register={register}
+            error={firstName}
+            inputPattern={NAME_PATTERN}
+            invalidDataMessage={INVALID_FIRST_NAME_MESSAGE}
+            isRequired
+          />
+          <Input
+            labelName="Last name"
+            name="lastName"
+            type="text"
+            register={register}
+            error={lastName}
+            inputPattern={NAME_PATTERN}
+            invalidDataMessage={INVALID_LAST_NAME_MESSAGE}
+            isRequired
+          />
+          <Input
+            labelName="Login"
+            name="login"
+            type="text"
+            register={register}
+            error={login}
+            inputPattern={LOGIN_PATTERN}
+            invalidDataMessage={INVALID_LOGIN_MESSAGE}
+            isRequired
+          />
+          <Input
+            labelName="Email"
+            name="email"
+            type="email"
+            register={register}
+            error={email}
+            inputPattern={EMAIL_PATTERN}
+            invalidDataMessage={INVALID_EMAIL_MESSAGE}
+            isRequired={false}
+          />
+          <Input
+            labelName="Password"
+            name="password"
+            type="password"
+            register={register}
+            error={password}
+            inputPattern={PASSWORD_PATTERN}
+            invalidDataMessage={INVALID_PASSWORD_MESSAGE}
+            isRequired
+          />
+          <Input
+            labelName="Repeat password"
+            name="repeatedPassword"
+            type="password"
+            register={register}
+            isRequired
+          />
+          <div className="small text-danger">
+            {passwordsMatch ? "" : INVALID_REPEATED_PASSWORD_MESSAGE}
+          </div>
 
-        <div className="sign-up-button-wrapper">
-          <button type="submit" className="btn btn-primary btn-raised">
-            Sign up
-          </button>
-        </div>
+          <div className="sign-up-button-wrapper">
+            <button type="submit" className="btn btn-primary btn-raised">
+              Sign up
+            </button>
+          </div>
 
-        <div className="sign-in-message-wrapper">
-          <p>Have an account? <Link to="/sign-in">Sign in</Link></p>
-        </div>
-      </form>
-    </>
+          <div className="sign-in-message-wrapper">
+            <p>Have an account? <Link to="/sign-in">Sign in</Link></p>
+          </div>
+        </form>
+      </>
   )
 }

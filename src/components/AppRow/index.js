@@ -1,17 +1,17 @@
 import React from "react";
-import SideBarContainer from "../../containers/SideBarContainer";
 
 import "./index.css"
+import UserSideBar from "../side-bar/UserSideBar";
 
-export default function AppRow({sideBar = <SideBarContainer/>, content}) {
+export default function AppRow({content}) {
 
   return (
     <div className={"app-row"}>
       <div className="left">
-        {sideBar}
+        <UserSideBar/>
       </div>
       <div className="right">
-          {content}
+        {content}
       </div>
     </div>
   )

@@ -1,3 +1,9 @@
+.from .form-title {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 30px;
+}
+
 .sign-in-form {
     max-width: 430px;
     margin: 15vh auto auto auto;
@@ -14,12 +20,6 @@
 
 .sign-in-form .form-input label {
     font-size: 15px;
-}
-
-.sign-in-form p {
-    font-size: 24px;
-    text-align: center;
-    margin-top: 30px;
 }
 
 .sign-in-form .btn-primary {

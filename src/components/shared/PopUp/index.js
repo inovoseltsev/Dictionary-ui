@@ -5,23 +5,17 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 
-export default function Dialog(props) {
-  const {
-    title, text, content, isOpened,
-    onClose, onAccept, isForm
-  } = props;
+export default function PopUp({title, open, onClose, children, onAccept}) {
 
   return (
-    <MuiDialog open={isOpened} onClose={onClose}>
+    <MuiDialog open={open} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
-        {props.children}
+        {children}
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">Cancel</Button>
-        <Button onClick={onAccept}
-                color="primary"
-                type={isForm ? "submit" : "button"}>Ok</Button>
+        <Button onClick={onClose} color="primary">Close</Button>
+        {onAccept ? <Button onClick={onAccept} color="primary">Ok</Button> : ""}
       </DialogActions>
     </MuiDialog>
   );

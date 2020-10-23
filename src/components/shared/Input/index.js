@@ -1,21 +1,26 @@
 import React, {useState} from "react";
-import TextField from "../../generic/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
+import TextField from "@material-ui/core/TextField";
 
 import "./index.css"
 
-export default function FormGroup(props) {
+export default function Input(props) {
 
   const {
-    inputType = "text", inputName, isRequired,
+    type = "text", name, isRequired,
     inputPattern, invalidDataMessage, labelName,
-    register, error, onClick, variant = "filled", value
+    register, error, onClick, variant = "filled", value = ""
   } = props;
 
   const [showPassword, setShowPassword] = useState(false);
-  const [isPassword] = useState(inputType === "password");
+  const [isPassword] = useState(type === "password");
+  const [inputData, setData] = useState(value);
+
+  const handleChange = (event) => {
+    setData(event.target.value);
+  }
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -24,7 +29,7 @@ export default function FormGroup(props) {
   const inputRef = register({
     required: {
       value: isRequired,
-      message: "Field is required *"
+      message: "Field is required"
     },
     pattern: {
       value: inputPattern,
@@ -49,19 +54,19 @@ export default function FormGroup(props) {
   return (
     <div className="form-input">
       <TextField
-        name={inputName}
-        id={inputName}
-        type={showPassword ? "text" : inputType}
-        label={labelName}
+        name={name}
+        id={name}
+        type={showPassword ? "text" : type}
+        label={error ? `${labelName} *` : labelName}
         onClick={onClick}
         InputProps={passwordFieldProps}
         inputRef={inputRef}
         variant={variant}
-        value={value}
+        value={inputData}
+        onChange={handleChange}
+        error={!!error}
+        helperText={error && error.message}
       />
-      <div className="small text-danger">
-        {error && error.message}
-      </div>
     </div>
   );
 }
