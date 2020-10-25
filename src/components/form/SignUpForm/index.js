@@ -50,61 +50,61 @@ export default function SignUpForm() {
           <p className="form-title">Sign up</p>
 
           <Input
-            labelName="First name"
+            label="First name"
             name="firstName"
             type="text"
             register={register}
             error={firstName}
             inputPattern={NAME_PATTERN}
             invalidDataMessage={INVALID_FIRST_NAME_MESSAGE}
-            isRequired
+            required
           />
           <Input
-            labelName="Last name"
+            label="Last name"
             name="lastName"
             type="text"
             register={register}
             error={lastName}
             inputPattern={NAME_PATTERN}
             invalidDataMessage={INVALID_LAST_NAME_MESSAGE}
-            isRequired
+            required
           />
           <Input
-            labelName="Login"
+            label="Login"
             name="login"
             type="text"
             register={register}
             error={login}
             inputPattern={LOGIN_PATTERN}
             invalidDataMessage={INVALID_LOGIN_MESSAGE}
-            isRequired
+            required
           />
           <Input
-            labelName="Email"
+            label="Email"
             name="email"
             type="email"
             register={register}
             error={email}
             inputPattern={EMAIL_PATTERN}
             invalidDataMessage={INVALID_EMAIL_MESSAGE}
-            isRequired={false}
+            required={false}
           />
           <Input
-            labelName="Password"
+            label="Password"
             name="password"
             type="password"
             register={register}
             error={password}
             inputPattern={PASSWORD_PATTERN}
             invalidDataMessage={INVALID_PASSWORD_MESSAGE}
-            isRequired
+            required
           />
           <Input
-            labelName="Repeat password"
+            label="Repeat password"
             name="repeatedPassword"
             type="password"
             register={register}
-            isRequired
+            required
           />
           <div className="small text-danger">
             {passwordsMatch ? "" : INVALID_REPEATED_PASSWORD_MESSAGE}

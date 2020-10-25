@@ -1,6 +1,7 @@
 .app-header {
     text-align: center;
     background-color: #ffffff;
+    border-radius: 0.25rem;
 }
 
 .link-to {

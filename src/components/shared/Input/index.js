@@ -9,8 +9,8 @@ import "./index.css"
 export default function Input(props) {
 
   const {
-    type = "text", name, isRequired,
-    inputPattern, invalidDataMessage, labelName,
+    type = "text", name, required,
+    inputPattern, invalidDataMessage, label,
     register, error, onClick, variant = "filled", value = ""
   } = props;
 
@@ -28,7 +28,7 @@ export default function Input(props) {
 
   const inputRef = register({
     required: {
-      value: isRequired,
+      value: required,
       message: "Field is required"
     },
     pattern: {
@@ -57,7 +57,7 @@ export default function Input(props) {
         name={name}
         id={name}
         type={showPassword ? "text" : type}
-        label={error ? `${labelName} *` : labelName}
+        label={error ? `${label} *` : label}
         onClick={onClick}
         InputProps={passwordFieldProps}
         inputRef={inputRef}

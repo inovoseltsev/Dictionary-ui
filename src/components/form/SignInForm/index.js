@@ -33,19 +33,19 @@ export default function SignInForm() {
           </div>
 
           <Input
-            labelName="Login"
+            label="Login"
             name="login"
             type="text"
             register={register}
-            isRequired
+            required
           />
 
           <Input
-            labelName="Password"
+            label="Password"
             name="password"
             type="password"
             register={register}
-            isRequired
+            required
           />
 
           <div className="sign-in-button-wrapper">

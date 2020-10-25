@@ -15,6 +15,16 @@ import {
 
 import * as termGroupService from "../services/termGroupService"
 
+export const getUserTermGroups = (id) => async (dispatch) => {
+  dispatch({type: GET_TERM_GROUPS_BY_USER_ID_REQUEST});
+  try {
+    const result = await termGroupService.getAllByUserId(id);
+    dispatch(getUserTermGroupsSuccess(result));
+  } catch (error) {
+    dispatch(getUserTermGroupsError({error}));
+  }
+}
+
 export const getUserTermGroupsSuccess = (termGroups) => {
   return {
     type: GET_TERM_GROUPS_BY_USER_ID_SUCCESS,
@@ -29,13 +39,14 @@ export const getUserTermGroupsError = (error) => {
   };
 }
 
-export const getUserTermGroups = (id) => async (dispatch) => {
-  dispatch({type: GET_TERM_GROUPS_BY_USER_ID_REQUEST});
+
+export const createUserTermGroup = (termGroup, allTermGroups) => async (dispatch) => {
+  dispatch({type: CREATE_TERM_GROUP_FOR_USER_REQUEST});
   try {
-    const result = await termGroupService.getAllByUserId(id);
-    dispatch(getUserTermGroupsSuccess(result));
+    const result = await termGroupService.createForUser(termGroup);
+    dispatch(createUserTermGroupSuccess(result, allTermGroups));
   } catch (error) {
-    dispatch(getUserTermGroupsError({error}));
+    dispatch(createUserTermGroupError({error}));
   }
 }
 
@@ -55,13 +66,14 @@ export const createUserTermGroupError = (error) => {
   }
 }
 
-export const createUserTermGroup = (termGroup, termGroups) => async (dispatch) => {
-  dispatch({type: CREATE_TERM_GROUP_FOR_USER_REQUEST});
+
+export const updateTermGroup = (termGroup, allTermGroups) => async (dispatch) => {
+  dispatch({type: UPDATE_TERM_GROUP_REQUEST});
   try {
-    const result = await termGroupService.createForUser(termGroup);
-    dispatch(createUserTermGroupSuccess(result, termGroups));
+    const result = await termGroupService.update(termGroup);
+    dispatch(updateTermGroupSuccess(result, allTermGroups));
   } catch (error) {
-    dispatch(createUserTermGroupError({error}));
+    dispatch(updateTermGroupError({error}));
   }
 }
 
@@ -80,13 +92,14 @@ export const updateTermGroupError = (error) => {
   };
 }
 
-export const updateTermGroup = (termGroupData, termGroups) => async (dispatch) => {
-  dispatch({type: UPDATE_TERM_GROUP_REQUEST});
+
+export const deleteTermGroup = (groupId, allTermGroups) => async (dispatch) => {
+  dispatch({type: DELETE_TERM_GROUP_REQUEST});
   try {
-    const result = await termGroupService.update(termGroupData);
-    dispatch(updateTermGroupSuccess(result, termGroups));
+    await termGroupService.deleteById(groupId);
+    dispatch(deleteTermGroupSuccess(groupId, allTermGroups));
   } catch (error) {
-    dispatch(updateTermGroupError({error}));
+    dispatch(deleteTermGroupError({error}));
   }
 }
 
@@ -103,14 +116,4 @@ export const deleteTermGroupError = (error) => {
     type: DELETE_TERM_GROUP_FAILURE,
     payload: error
   };
-}
-
-export const deleteTermGroup = (groupId, termGroups) => async (dispatch) => {
-  dispatch({type: DELETE_TERM_GROUP_REQUEST});
-  try {
-    await termGroupService.deleteById(groupId);
-    dispatch(deleteTermGroupSuccess(groupId, termGroups));
-  } catch (error) {
-    dispatch(deleteTermGroupError({error}));
-  }
 }

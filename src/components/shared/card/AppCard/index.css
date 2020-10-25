@@ -1,9 +1,25 @@
 .app-card {
-    width: 30%;
+    width: 49%;
     height: 145px;
-    max-width: 320px;
+    max-width: 400px;
+    max-height: 160px;
+    transition: 0.1s !important;
+}
+
+.app-card:hover {
+    cursor: pointer;
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
 }
 
 .app-card .MuiIconButton-root {
     margin-left: auto;
+}
+
+.app-card .card-actions {
+    display: none;
+}
+
+.app-card:hover .card-actions {
+    display: flex;
 }

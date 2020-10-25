@@ -22,11 +22,9 @@ export async function createForUser(termGroup) {
   });
 }
 
-export async function update(termGroupData) {
-  const {cardId, name, content} = termGroupData;
-  const termGroup = {name, description: content};
+export async function update(termGroup) {
   return await createApiCall({
-    url: API_V1_URL + DEFAULT_URL + `${cardId}/`,
+    url: API_V1_URL + DEFAULT_URL + `${termGroup.id}/`,
     method: "PUT",
     data: termGroup
   })

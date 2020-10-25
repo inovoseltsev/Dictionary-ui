@@ -4,7 +4,7 @@ export default function createCardRows(dataArray) {
   const lastEl = dataArray[dataArray.length - 1];
   dataArray.forEach(el => {
     subArr.push(el);
-    if (subArr.length === 3 || el === lastEl) {
+    if (subArr.length === 2 || el === lastEl) {
       result.push(createArrObject(subArr));
       subArr = [];
     }
