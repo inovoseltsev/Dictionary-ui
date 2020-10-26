@@ -35,7 +35,7 @@
     margin-top: auto;
     margin-bottom: auto;
     height: 100%;
-    padding: 2% 2% 2%;
+    padding: 2% 2% 0;
 }
 
 .app-row .right .content-wrapper::-webkit-scrollbar {

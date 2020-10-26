@@ -2,7 +2,7 @@ import React from "react";
 import {Route, Switch} from "react-router";
 import StartMenu from "../../components/StartMenu";
 import SignInForm from "../../components/form/SignInForm";
-import SignUpForm from "../../components/form/SignInForm";
+import SignUpForm from "../../components/form/SignUpForm";
 
 export default function StartPage() {
 

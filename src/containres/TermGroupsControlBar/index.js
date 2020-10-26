@@ -7,18 +7,27 @@ import TermGroupForm from "../TermGroupForm";
 
 export default function TermGroupsControlBar() {
 
-  const [isDialogOpen, setOpen] = useState(false);
+  const [isPopUpOpen, setPopUpOpen] = useState(false);
 
   return (
     <>
       <ContentControlBar>
-        <Button color="primary" variant="contained" onClick={() => setOpen(true)}>
-          <CreateOutlined fontSize="small"/>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => setPopUpOpen(true)}
+          startIcon={<CreateOutlined fontSize="small"/>}
+        >
+          Create group
         </Button>
       </ContentControlBar>
 
-      <PopUp title="Create group" open={isDialogOpen} onClose={() => setOpen(false)}>
-        <TermGroupForm closePopUp={() => setOpen(false)}/>
+      <PopUp
+        title="Create group"
+        open={isPopUpOpen}
+        onClose={() => setPopUpOpen(false)}
+      >
+        <TermGroupForm closePopUp={() => setPopUpOpen(false)}/>
       </PopUp>
     </>
   );

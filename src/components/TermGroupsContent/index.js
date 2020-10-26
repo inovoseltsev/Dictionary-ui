@@ -6,8 +6,8 @@ import {deleteTermGroup, getUserTermGroups} from "../../actions/termGroup";
 import createCardRows from "../../helpers/createCardRows";
 import {LOADING} from "../../helpers/requestStatus";
 import Spinner from "../Spinner";
-import {useForm} from "react-hook-form";
 import TermGroupsControlBar from "../../containres/TermGroupsControlBar";
+import TermGroupForm from "../../containres/TermGroupForm";
 
 export default function TermGroupsContent() {
 
@@ -15,7 +15,6 @@ export default function TermGroupsContent() {
   const rows = createCardRows(termGroups);
   const userId = useSelector(state => state.userReducer.id);
   const dispatch = useDispatch();
-  const {handleSubmit, register} = useForm();
 
   useEffect(() => {
     dispatch(getUserTermGroups(userId));
@@ -37,10 +36,12 @@ export default function TermGroupsContent() {
                 id={el.id}
                 cardName={el.name}
                 content={el.description}
-                onEditApply={() => {}}
-                onDelete={() => onGroupDelete(el.id)}
                 about="group"
-                register={register}
+                onDelete={() => onGroupDelete(el.id)}
+                form={TermGroupForm}
+                groupName={el.name}
+                groupDescription={el.description}
+                groupId={el.id}
               />)}
             />)}
         </div>

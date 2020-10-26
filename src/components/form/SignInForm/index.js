@@ -4,10 +4,11 @@ import Input from "../../shared/Input";
 import {FAILED} from "../../../helpers/requestStatus";
 import {LOGIN_ERROR} from "../../../utils/constants/messages/error-messages";
 import AppHeader from "../../shared/AppHeader";
-import "./index.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {loginUser} from "../../../actions/auth";
+
+import "./index.css"
 
 export default function SignInForm() {
 

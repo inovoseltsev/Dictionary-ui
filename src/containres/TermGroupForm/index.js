@@ -14,7 +14,7 @@ export default function TermGroupForm({isEdit, groupName, groupDescription, grou
   const firstInputProps = {
     name: "name",
     label: "Group name",
-    value: isEdit ? "" : groupName,
+    value: isEdit ? groupName : "",
     register: register,
     required: true
   };
@@ -22,7 +22,7 @@ export default function TermGroupForm({isEdit, groupName, groupDescription, grou
   const secondInputProps = {
     name: "description",
     label: "Group description",
-    value: isEdit ? "" : groupDescription,
+    value: isEdit ? groupDescription : "",
     register: register,
     required: false
   };
@@ -38,10 +38,10 @@ export default function TermGroupForm({isEdit, groupName, groupDescription, grou
   }
 
   const onSubmit = (data) => {
-   isEdit ? onEditGroup(data) : onCreateGroup(data);
-   if (closePopUp) {
-     closePopUp();
-   }
+    if (closePopUp) {
+      closePopUp();
+    }
+    isEdit ? onEditGroup(data) : onCreateGroup(data);
   }
 
   return (
