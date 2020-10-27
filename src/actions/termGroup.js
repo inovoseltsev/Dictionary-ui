@@ -1,10 +1,19 @@
 import {
+  CREATE_TERM_GROUP_FOR_FOLDER_FAILURE,
+  CREATE_TERM_GROUP_FOR_FOLDER_REQUEST,
+  CREATE_TERM_GROUP_FOR_FOLDER_SUCCESS,
   CREATE_TERM_GROUP_FOR_USER_FAILURE,
   CREATE_TERM_GROUP_FOR_USER_REQUEST,
   CREATE_TERM_GROUP_FOR_USER_SUCCESS,
   DELETE_TERM_GROUP_FAILURE,
   DELETE_TERM_GROUP_REQUEST,
   DELETE_TERM_GROUP_SUCCESS,
+  GET_TERM_GROUP_FAILURE,
+  GET_TERM_GROUP_REQUEST,
+  GET_TERM_GROUP_SUCCESS,
+  GET_TERM_GROUPS_BY_FOLDER_ID_FAILURE,
+  GET_TERM_GROUPS_BY_FOLDER_ID_REQUEST,
+  GET_TERM_GROUPS_BY_FOLDER_ID_SUCCESS,
   GET_TERM_GROUPS_BY_USER_ID_FAILURE,
   GET_TERM_GROUPS_BY_USER_ID_REQUEST,
   GET_TERM_GROUPS_BY_USER_ID_SUCCESS,
@@ -15,26 +24,76 @@ import {
 
 import * as termGroupService from "../services/termGroupService"
 
-export const getUserTermGroups = (id) => async (dispatch) => {
+export const getTermGroup = (id) => async (dispatch) => {
+  dispatch({type: GET_TERM_GROUP_REQUEST});
+  try {
+    const termGroup = await termGroupService.getById(id);
+    dispatch(getTermGroupSuccess(termGroup));
+  } catch (error) {
+    dispatch(getTermGroupError({error}));
+  }
+}
+
+const getTermGroupSuccess = (termGroup) => {
+  return {
+    type: GET_TERM_GROUP_SUCCESS,
+    payload: termGroup
+  };
+}
+
+const getTermGroupError = (error) => {
+  return {
+    type: GET_TERM_GROUP_FAILURE,
+    payload: error
+  };
+}
+
+
+export const getUserTermGroups = (userId) => async (dispatch) => {
   dispatch({type: GET_TERM_GROUPS_BY_USER_ID_REQUEST});
   try {
-    const result = await termGroupService.getAllByUserId(id);
-    dispatch(getUserTermGroupsSuccess(result));
+    const termGroups = await termGroupService.getAllByUserId(userId);
+    dispatch(getUserTermGroupsSuccess(termGroups));
   } catch (error) {
     dispatch(getUserTermGroupsError({error}));
   }
 }
 
-export const getUserTermGroupsSuccess = (termGroups) => {
+const getUserTermGroupsSuccess = (termGroups) => {
   return {
     type: GET_TERM_GROUPS_BY_USER_ID_SUCCESS,
     payload: termGroups
   };
 }
 
-export const getUserTermGroupsError = (error) => {
+const getUserTermGroupsError = (error) => {
   return {
     type: GET_TERM_GROUPS_BY_USER_ID_FAILURE,
+    payload: error
+  };
+}
+
+
+export const getFolderTermGroups = (folderId) => async (dispatch) => {
+  dispatch({type: GET_TERM_GROUPS_BY_FOLDER_ID_REQUEST});
+  try {
+    const termGroups = await termGroupService.getAllByFolderId(folderId);
+    dispatch(getFolderTermGroupsSuccess(termGroups));
+  } catch (error) {
+    dispatch(getFolderTermGroupsError(error));
+  }
+}
+
+const getFolderTermGroupsSuccess = (termGroups) => {
+  return {
+    type: GET_TERM_GROUPS_BY_FOLDER_ID_SUCCESS,
+    payload: termGroups
+  };
+}
+
+const getFolderTermGroupsError = (error) => {
+  return {
+    type: GET_TERM_GROUPS_BY_FOLDER_ID_FAILURE,
     payload: error
   };
 }
@@ -43,14 +102,14 @@ export const getUserTermGroupsError = (error) => {
 export const createUserTermGroup = (termGroup, allTermGroups) => async (dispatch) => {
   dispatch({type: CREATE_TERM_GROUP_FOR_USER_REQUEST});
   try {
-    const result = await termGroupService.createForUser(termGroup);
-    dispatch(createUserTermGroupSuccess(result, allTermGroups));
+    const createdTermGroup = await termGroupService.createForUser(termGroup);
+    dispatch(createUserTermGroupSuccess(createdTermGroup, allTermGroups));
   } catch (error) {
     dispatch(createUserTermGroupError({error}));
   }
 }
 
-export const createUserTermGroupSuccess = (termGroup, termGroups) => {
+const createUserTermGroupSuccess = (termGroup, termGroups) => {
   const updatedGroups = [...termGroups];
   updatedGroups.push(termGroup);
   return {
@@ -59,7 +118,7 @@ export const createUserTermGroupSuccess = (termGroup, termGroups) => {
   }
 }
 
-export const createUserTermGroupError = (error) => {
+const createUserTermGroupError = (error) => {
   return {
     type: CREATE_TERM_GROUP_FOR_USER_FAILURE,
     payload: error
@@ -67,17 +126,44 @@ export const createUserTermGroupError = (error) => {
 }
 
 
+export const createFolderTermGroup = (termGroup, allTermGroups) => async (dispatch) => {
+  dispatch({type: CREATE_TERM_GROUP_FOR_FOLDER_REQUEST});
+  try {
+    const createdTermGroup = await termGroupService.createForFolder(termGroup);
+    dispatch(createFolderTermGroupSuccess(createdTermGroup, allTermGroups));
+  } catch (error) {
+    dispatch(createFolderTermGroupError({error}))
+  }
+}
+
+const createFolderTermGroupSuccess = (termGroup, termGroups) => {
+  const updatedGroups = [...termGroups];
+  updatedGroups.push(termGroup);
+  return {
+    type: CREATE_TERM_GROUP_FOR_FOLDER_SUCCESS,
+    payload: {termGroups: updatedGroups, termGroup}
+  };
+}
+
+const createFolderTermGroupError = (error) => {
+  return {
+    type: CREATE_TERM_GROUP_FOR_FOLDER_FAILURE,
+    payload: error
+  };
+}
+
+
 export const updateTermGroup = (termGroup, allTermGroups) => async (dispatch) => {
   dispatch({type: UPDATE_TERM_GROUP_REQUEST});
   try {
-    const result = await termGroupService.update(termGroup);
-    dispatch(updateTermGroupSuccess(result, allTermGroups));
+    const updatedTermGroup = await termGroupService.update(termGroup);
+    dispatch(updateTermGroupSuccess(updatedTermGroup, allTermGroups));
   } catch (error) {
     dispatch(updateTermGroupError({error}));
   }
 }
 
-export const updateTermGroupSuccess = (termGroup, termGroups) => {
+const updateTermGroupSuccess = (termGroup, termGroups) => {
   const updatedGroups = termGroups.map(el => el.id === termGroup.id ? termGroup : el);
   return {
     type: UPDATE_TERM_GROUP_SUCCESS,
@@ -85,7 +171,7 @@ export const updateTermGroupSuccess = (termGroup, termGroups) => {
   };
 }
 
-export const updateTermGroupError = (error) => {
+const updateTermGroupError = (error) => {
   return {
     type: UPDATE_TERM_GROUP_FAILURE,
     payload: error
@@ -103,7 +189,7 @@ export const deleteTermGroup = (groupId, allTermGroups) => async (dispatch) => {
   }
 }
 
-export const deleteTermGroupSuccess = (groupId, termGroups) => {
+const deleteTermGroupSuccess = (groupId, termGroups) => {
   const updatedGroups = termGroups.filter(el => el.id !== groupId);
   return {
     type: DELETE_TERM_GROUP_SUCCESS,
@@ -111,7 +197,7 @@ export const deleteTermGroupSuccess = (groupId, termGroups) => {
   }
 }
 
-export const deleteTermGroupError = (error) => {
+const deleteTermGroupError = (error) => {
   return {
     type: DELETE_TERM_GROUP_FAILURE,
     payload: error

@@ -1,8 +1,8 @@
 import React from "react";
-import CardForm from "../../components/shared/card/CardForm";
+import CardForm from "../../../components/shared/card/CardForm";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {createUserTermGroup, updateTermGroup} from "../../actions/termGroup";
+import {createUserTermGroup, updateTermGroup} from "../../../actions/termGroup";
 
 export default function TermGroupForm({isEdit, groupName, groupDescription, groupId, closePopUp}) {
 

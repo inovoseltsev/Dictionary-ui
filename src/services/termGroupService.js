@@ -14,9 +14,23 @@ export async function getAllByUserId(id) {
   });
 }
 
+export async function getAllByFolderId(id) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `term-group-folders/${id}`
+  });
+}
+
 export async function createForUser(termGroup) {
   return await createApiCall({
     url: API_V1_URL + DEFAULT_URL + "users",
+    method: "POST",
+    data: termGroup
+  });
+}
+
+export async function createForFolder(termGroup) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + "term-group-folders",
     method: "POST",
     data: termGroup
   });

@@ -9,7 +9,8 @@ export default function SideBarItem({route, name, onClick}) {
     <div className="bar-item-wrapper">
       <Link to={route} onClick={onClick}
             className="list-group-item list-group-item-action bg-light">
-        <p>{name}</p></Link>
+        <p>{name}</p>
+      </Link>
     </div>
   )
 }

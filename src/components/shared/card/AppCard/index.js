@@ -8,7 +8,7 @@ import {DialogContentText} from "@material-ui/core";
 
 export default function AppCard(props) {
 
-  const {cardName, content, onDelete, about, form: Form} = props;
+  const {cardName, content, onDelete, about, form: Form, onClick} = props;
 
   const [isPopUpOpen, setPopUpOpen] = useState(false);
   const [isEditable, setEditable] = useState(false);
@@ -24,7 +24,7 @@ export default function AppCard(props) {
 
   return (
     <>
-      <Card className="app-card">
+      <Card className="app-card" onClick={onClick}>
         <ContentSide
           cardName={cardName}
           content={content}

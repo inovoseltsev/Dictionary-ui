@@ -6,8 +6,9 @@ import {deleteTermGroup, getUserTermGroups} from "../../actions/termGroup";
 import createCardRows from "../../helpers/createCardRows";
 import {LOADING} from "../../helpers/requestStatus";
 import Spinner from "../Spinner";
-import TermGroupsControlBar from "../../containres/TermGroupsControlBar";
-import TermGroupForm from "../../containres/TermGroupForm";
+import TermGroupsControlBar from "../../containres/term-group/TermGroupsControlBar";
+import TermGroupForm from "../../containres/term-group/TermGroupForm";
+import {useHistory} from "react-router";
 
 export default function TermGroupsContent() {
 
@@ -15,6 +16,7 @@ export default function TermGroupsContent() {
   const rows = createCardRows(termGroups);
   const userId = useSelector(state => state.userReducer.id);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getUserTermGroups(userId));
@@ -42,6 +44,7 @@ export default function TermGroupsContent() {
                 groupName={el.name}
                 groupDescription={el.description}
                 groupId={el.id}
+                // onClick={() => history.push(`/term-groups/${el.id}`)}
               />)}
             />)}
         </div>

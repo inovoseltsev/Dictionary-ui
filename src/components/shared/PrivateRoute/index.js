@@ -7,7 +7,7 @@ export default function PrivateRoute({component, isAuth, ...rest}) {
     <Route {...rest} render={() => (
       isAuth ?
         (component) :
-        (<Redirect to={"/sign-in"}/>)
+        (<Redirect to="/sign-in"/>)
     )}/>
   );
 }

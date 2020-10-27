@@ -8,27 +8,38 @@ import {
 } from "../utils/constants/action-types/user";
 import * as userService from "../services/userService";
 
-export const createUserError = (error) => {
+export const createUser = (user) => async (dispatch) => {
+  dispatch({type: CREATE_USER_REQUEST});
+  try {
+    const createdUser = await userService.create(user);
+    dispatch(createUserSuccess(createdUser));
+  } catch (error) {
+    dispatch(createUserError({error}));
+  }
+}
+
+const createUserError = (error) => {
   return {
     type: CREATE_USER_FAILURE,
     payload: error
   };
 }
 
-export const createUserSuccess = (user) => {
+const createUserSuccess = (user) => {
   return {
     type: CREATE_USER_SUCCESS,
     payload: user
   };
 }
 
-export const createUser = (user) => async (dispatch) => {
-  dispatch({type: CREATE_USER_REQUEST});
+
+export const getUserById = (id) => async (dispatch) => {
+  dispatch({type: GET_USER_REQUEST});
   try {
-    const result = await userService.create(user);
-    dispatch(createUserSuccess(result));
+    const user = await userService.getById(id);
+    dispatch(getUserSuccess(user));
   } catch (error) {
-    dispatch(createUserError({error}));
+    dispatch(getUserError({error}));
   }
 }
 
@@ -39,21 +50,11 @@ export const getUserSuccess = (user) => {
   };
 }
 
-export const getUserError = (error) => {
+const getUserError = (error) => {
   return {
     type: GET_USER_FAILURE,
     payload: error
   };
-}
-
-export const getUserById = (id) => async (dispatch) => {
-  dispatch({type: GET_USER_REQUEST});
-  try {
-    const result = await userService.getById(id);
-    dispatch(getUserSuccess(result));
-  } catch (error) {
-    dispatch(getUserError({error}));
-  }
 }
 
 

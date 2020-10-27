@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import ContentControlBar from "../../components/shared/ContentControlBar";
-import PopUp from "../../components/shared/PopUp";
+import ContentControlBar from "../../../components/shared/ContentControlBar";
+import PopUp from "../../../components/shared/PopUp";
 import {Button} from "@material-ui/core";
 import {CreateOutlined} from "@material-ui/icons";
 import TermGroupForm from "../TermGroupForm";
