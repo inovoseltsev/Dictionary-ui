@@ -1,17 +1,17 @@
 .app-header {
-    text-align: center;
-    background-color: #ffffff;
-    border-radius: 0.25rem;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 0.25rem;
 }
 
 .link-to {
-    font-style: italic;
-    font-weight: 200;
-    font-size: 40px;
-    text-decoration: none !important;
-    color: #2daee5;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 30px;
+  text-decoration: none !important;
+  color: #2daee5;
 }
 
 .link-to:hover {
-    color: #199acb;
+  color: #199acb;
 }

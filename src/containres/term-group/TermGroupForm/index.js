@@ -1,31 +1,19 @@
 import React from "react";
-import CardForm from "../../../components/shared/card/CardForm";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
 import {createUserTermGroup, updateTermGroup} from "../../../actions/termGroup";
+import Form from "../../../components/shared/Form";
+import Input from "../../../components/shared/Input";
+import {Button} from "@material-ui/core";
 
-export default function TermGroupForm({isEdit, groupName, groupDescription, groupId, closePopUp}) {
+export default function TermGroupForm({title, isEdit, groupName, groupDescription, groupId, closePopUp}) {
 
   const allTermGroups = useSelector(state => state.termGroupReducer.termGroups);
   const userId = useSelector(state => state.userReducer.id);
   const {handleSubmit, register} = useForm();
   const dispatch = useDispatch();
 
-  const firstInputProps = {
-    name: "name",
-    label: "Group name",
-    value: isEdit ? groupName : "",
-    register: register,
-    required: true
-  };
-
-  const secondInputProps = {
-    name: "description",
-    label: "Group description",
-    value: isEdit ? groupDescription : "",
-    register: register,
-    required: false
-  };
+  const primaryButtonStyles = {display: "flex", marginLeft: "auto"}
 
   const onEditGroup = (formData) => {
     const termGroup = {id: groupId, ...formData};
@@ -45,11 +33,29 @@ export default function TermGroupForm({isEdit, groupName, groupDescription, grou
   }
 
   return (
-    <CardForm
-      onSubmit={handleSubmit(onSubmit)}
-      firstInputProps={firstInputProps}
-      secondInputProps={secondInputProps}
-      closePopUp={closePopUp}
-    />
+    <Form title={title} onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        name="name"
+        label="Group name"
+        value={isEdit ? groupName : ""}
+        register={register}
+        required
+      />
+      <Input
+        name="description"
+        label="Group description"
+        value={isEdit ? groupDescription : ""}
+        register={register}
+        required={false}
+      />
+      <Button
+        type="submit"
+        color="primary"
+        variant="contained"
+        style={primaryButtonStyles}
+      >
+        Submit
+      </Button>
+    </Form>
   );
 }

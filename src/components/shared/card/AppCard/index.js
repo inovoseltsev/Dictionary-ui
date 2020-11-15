@@ -24,23 +24,25 @@ export default function AppCard(props) {
 
   return (
     <>
-      <Card className="app-card" onClick={onClick}>
+      <Card className="app-card">
         <ContentSide
           cardName={cardName}
           content={content}
           onEdit={onEditPress}
           onDelete={onDeletePress}
           dialogAbout={about}
+          onOpenCard={onClick}
         />
 
         <PopUp
           open={isPopUpOpen}
-          title={isEditable ? `Edit ${about}` : `Delete ${about}`}
+          title={isEditable ? "" : `Delete ${about}`}
           onClose={() => setPopUpOpen(false)}
           onAccept={isEditable ? "" : onDelete}
         >
           {isEditable ?
             <Form
+              title={`Edit ${about}`}
               {...props}
               isEdit
               closePopUp={() => setPopUpOpen(false)}

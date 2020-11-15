@@ -3,8 +3,8 @@ import {Switch} from "react-router";
 import {useSelector} from "react-redux";
 import PrivateRoute from "../../components/shared/PrivateRoute";
 import AppRow from "../../components/AppRow";
-import TermGroupsContent from "../../components/TermGroupsContent";
-import TermGroupContent from "../../components/TermGroupContent";
+import TermGroups from "../../components/TermGroups";
+import Terms from "../../components/Terms";
 
 export default function UserPage() {
 
@@ -15,18 +15,18 @@ export default function UserPage() {
       <PrivateRoute
         path="/home"
         isAuth={isAuth}
-        component={<AppRow content={<TermGroupsContent/>}/>}
+        component={<AppRow content={<TermGroups/>}/>}
       />
       <PrivateRoute
         path="/term-groups"
         isAuth={isAuth}
-        component={<AppRow content={<TermGroupsContent/>}/>}
+        component={<AppRow content={<TermGroups/>}/>}
         exact
       />
       <PrivateRoute
         path="/term-groups/:id"
         isAuth={isAuth}
-        component={<AppRow content={<TermGroupContent/>}/>}
+        component={<AppRow content={<Terms/>}/>}
         exact
       />
     </Switch>

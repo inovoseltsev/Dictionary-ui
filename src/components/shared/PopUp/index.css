@@ -1,3 +1,15 @@
+.MuiBackdrop-root{
+  opacity: 0.5 !important;
+}
+
+.MuiDialog-paper {
+  background-color: #fafafa !important;
+}
+
 .pop-up .MuiDialog-container {
-    height: 75%;
+  height: 75%;
+}
+
+.MuiDialogTitle-root {
+  text-align: center;
 }

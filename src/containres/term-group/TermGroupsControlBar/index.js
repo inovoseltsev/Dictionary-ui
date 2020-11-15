@@ -23,11 +23,10 @@ export default function TermGroupsControlBar() {
       </ContentControlBar>
 
       <PopUp
-        title="Create group"
         open={isPopUpOpen}
         onClose={() => setPopUpOpen(false)}
       >
-        <TermGroupForm closePopUp={() => setPopUpOpen(false)}/>
+        <TermGroupForm title="Create group" closePopUp={() => setPopUpOpen(false)}/>
       </PopUp>
     </>
   );

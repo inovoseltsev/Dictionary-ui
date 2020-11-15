@@ -10,7 +10,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(refreshUser());
-  },[dispatch])
+  }, [dispatch])
 
   return (
     <div className="App">

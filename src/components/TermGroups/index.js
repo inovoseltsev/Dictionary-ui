@@ -10,7 +10,7 @@ import TermGroupsControlBar from "../../containres/term-group/TermGroupsControlB
 import TermGroupForm from "../../containres/term-group/TermGroupForm";
 import {useHistory} from "react-router";
 
-export default function TermGroupsContent() {
+export default function TermGroups() {
 
   const {termGroups, status} = useSelector(state => state.termGroupReducer);
   const rows = createCardRows(termGroups);
@@ -44,7 +44,7 @@ export default function TermGroupsContent() {
                 groupName={el.name}
                 groupDescription={el.description}
                 groupId={el.id}
-                // onClick={() => history.push(`/term-groups/${el.id}`)}
+                onClick={() => history.push(`/term-groups/${el.id}`)}
               />)}
             />)}
         </div>

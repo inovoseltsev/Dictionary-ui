@@ -1,14 +1,14 @@
 .app-row .right .content-control-bar {
-    display: flex;
-    margin-left: auto;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    padding-right: 2%;
-    background-color: #ffffff;
-    width: 100%;
-    border-radius: 0.25rem 0.25rem 0 0;
+  display: flex;
+  margin-left: auto;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-right: 2%;
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .content-control-bar button {
-    margin-left: 2%;
+  margin-left: 2%;
 }

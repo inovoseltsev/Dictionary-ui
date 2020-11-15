@@ -13,6 +13,7 @@ export default function createCardRows(dataArray) {
 }
 
 let idCounter = 0;
+
 function createArrObject(array) {
   return {
     id: idCounter++,

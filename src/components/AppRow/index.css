@@ -1,44 +1,44 @@
 .app-row {
-    display: flex;
-    height: 70vh;
-    width: 55vw;
-    justify-content: space-between;
-    margin: 150px auto auto auto;
-    min-width: 1134px;
-    max-width: 1134px;
+  display: flex;
+  height: 70vh;
+  width: 55vw;
+  justify-content: space-between;
+  margin: 150px auto auto auto;
+  min-width: 1134px;
+  max-width: 1134px;
 }
 
 .app-row .left {
-    border-radius: .25rem;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-    0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    width: 24%;
-    background-color: #ffffff;
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+  0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  width: 24%;
+  background-color: #ffffff;
 }
 
 .app-row .left .bg-light {
-    border-radius: 3px;
+  border-radius: 3px;
 }
 
 .app-row .right {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
-    0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    border-radius: .25rem;
-    width: 75%;
-    background-color: #f6f7fb;
-    display: flex;
-    flex-direction: column;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+  0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  border-radius: .25rem;
+  width: 75%;
+  background-color: #f6f7fb;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-row .right .content-wrapper {
-    overflow-y: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    height: 100%;
-    padding: 2% 2% 0;
+  overflow-y: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
+  padding: 2% 2% 0;
 }
 
 .app-row .right .content-wrapper::-webkit-scrollbar {
-    background-color: transparent;
-    width: 0;
+  background-color: transparent;
+  width: 0;
 }

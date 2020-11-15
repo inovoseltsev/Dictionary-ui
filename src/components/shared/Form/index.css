@@ -1,0 +1,24 @@
+.form {
+  max-width: 430px;
+  width: 430px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+  0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 0 1.5rem 1.5rem;
+  border-radius: .25rem;
+}
+
+.form .form-title {
+  font-size: 25px;
+  text-align: center;
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+
+.form .form-input {
+  margin-bottom: 1rem;
+}
+
+.form .form-input label {
+  font-size: 15px;
+}

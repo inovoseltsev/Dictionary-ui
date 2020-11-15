@@ -1,10 +1,11 @@
 .card-form {
-    min-width: 344px;
+  min-width: 400px;
 }
-.card-form .edit-fields .form-input{
-    margin-bottom: 20px;
+
+.card-form .edit-fields .form-input {
+  margin-bottom: 20px;
 }
 
 .card-form .MuiIconButton-root {
-    margin-left: auto;
+  margin-left: auto;
 }

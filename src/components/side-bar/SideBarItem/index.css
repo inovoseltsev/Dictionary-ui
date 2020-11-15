@@ -1,15 +1,15 @@
 .bar-item-wrapper {
-    margin-top: 7px;
-    margin-bottom: 7px;
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
 
 .bar-item-wrapper a {
-    background-color: #ffffff !important;
+  background-color: #ffffff !important;
 }
 
 .bar-item-wrapper a p {
-    font-size: 14px;
-    font-weight: 500;
-    margin: 0 auto !important;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 auto !important;
 }
 
