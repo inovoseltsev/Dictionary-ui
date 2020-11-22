@@ -9,9 +9,9 @@ import "./index.css"
 export default function Input(props) {
 
   const {
-    type = "text", name, required,
-    inputPattern, invalidDataMessage, label,
-    register, error, onClick, variant = "filled", value = ""
+    type = "text", name, required, inputPattern,
+    invalidDataMessage, label, register, error,
+    onClick, variant = "filled", value = "", hidden
   } = props;
 
   const [showPassword, setShowPassword] = useState(false);
@@ -66,6 +66,7 @@ export default function Input(props) {
         onChange={handleChange}
         error={!!error}
         helperText={error && error.message}
+        hidden={hidden}
       />
     </div>
   );

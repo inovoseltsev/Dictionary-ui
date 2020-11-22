@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import ContentControlBar from "../../../components/shared/ContentControlBar";
 import {Button} from "@material-ui/core";
 import {CreateOutlined, LibraryBooksRounded} from "@material-ui/icons";
+import PopUp from "../../../components/shared/PopUp";
+import TermForm from "../TermForm";
 
 export default function TermControlBar() {
+
+  const [isPopUpOpen, setPopUpOpen] = useState(false);
 
   return (
     <>
@@ -11,8 +15,7 @@ export default function TermControlBar() {
         <Button
           color="primary"
           variant="contained"
-          onClick={() => {
-          }}
+          onClick={() => setPopUpOpen(true)}
           startIcon={<CreateOutlined fontSize="small"/>}
         >
           Create term
@@ -27,6 +30,13 @@ export default function TermControlBar() {
           Study group
         </Button>
       </ContentControlBar>
+
+      <PopUp
+        open={isPopUpOpen}
+        onClose={() => setPopUpOpen(false)}
+      >
+        <TermForm title="Create term" closePopUp={() => setPopUpOpen(false)}/>
+      </PopUp>
     </>
   );
 }

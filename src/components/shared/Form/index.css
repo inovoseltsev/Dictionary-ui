@@ -22,3 +22,7 @@
 .form .form-input label {
   font-size: 15px;
 }
+.form .primary-button {
+  display: flex;
+  margin-left: auto;
+}

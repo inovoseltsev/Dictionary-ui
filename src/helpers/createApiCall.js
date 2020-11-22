@@ -19,7 +19,6 @@ export default async ({
     method,
     responseType,
     headers: {
-      "Content-Type": "application/json; charset=utf-8",
       Authorization: tokenRequired ? `Bearer_${accessToken}` : null,
       ...headers
     },

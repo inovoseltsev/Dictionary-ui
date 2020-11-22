@@ -13,8 +13,6 @@ export default function TermGroupForm({title, isEdit, groupName, groupDescriptio
   const {handleSubmit, register} = useForm();
   const dispatch = useDispatch();
 
-  const primaryButtonStyles = {display: "flex", marginLeft: "auto"}
-
   const onEditGroup = (formData) => {
     const termGroup = {id: groupId, ...formData};
     dispatch(updateTermGroup(termGroup, allTermGroups));
@@ -46,13 +44,12 @@ export default function TermGroupForm({title, isEdit, groupName, groupDescriptio
         label="Group description"
         value={isEdit ? groupDescription : ""}
         register={register}
-        required={false}
       />
       <Button
+        className="primary-button"
         type="submit"
         color="primary"
         variant="contained"
-        style={primaryButtonStyles}
       >
         Submit
       </Button>

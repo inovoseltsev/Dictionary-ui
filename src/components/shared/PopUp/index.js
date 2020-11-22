@@ -16,7 +16,7 @@ export default function PopUp({title, open, onClose, children, onAccept}) {
         {children}
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">Close</Button>
+        <Button onClick={onClose} color="secondary">Close</Button>
         {onAccept ? <Button onClick={onAccept} color="primary">Ok</Button> : ""}
       </DialogActions>
     </MuiDialog>

@@ -111,7 +111,7 @@ export const createUserTermGroup = (termGroup, allTermGroups) => async (dispatch
 
 const createUserTermGroupSuccess = (termGroup, termGroups) => {
   const updatedGroups = [...termGroups];
-  updatedGroups.push(termGroup);
+  updatedGroups.unshift(termGroup);
   return {
     type: CREATE_TERM_GROUP_FOR_USER_SUCCESS,
     payload: {termGroups: updatedGroups, termGroup}
@@ -138,7 +138,7 @@ export const createFolderTermGroup = (termGroup, allTermGroups) => async (dispat
 
 const createFolderTermGroupSuccess = (termGroup, termGroups) => {
   const updatedGroups = [...termGroups];
-  updatedGroups.push(termGroup);
+  updatedGroups.unshift(termGroup);
   return {
     type: CREATE_TERM_GROUP_FOR_FOLDER_SUCCESS,
     payload: {termGroups: updatedGroups, termGroup}
