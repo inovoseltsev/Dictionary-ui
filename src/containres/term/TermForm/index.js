@@ -90,7 +90,7 @@ export default function TermForm(props) {
       >
         Submit
       </Button>
-      <img src={`data:image/jpeg;base64,${image}`} width={"100px"} height={"100px"} alt={""}/>
+      <img src={image ? `data:image/jpeg;base64,${image}` : ""} width={"100px"} height={"100px"} alt={""}/>
     </Form>
   );
 }

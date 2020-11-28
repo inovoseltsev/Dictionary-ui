@@ -1,9 +1,36 @@
 import {
   CREATE_TERM_FAILURE,
   CREATE_TERM_REQUEST,
-  CREATE_TERM_SUCCESS
+  CREATE_TERM_SUCCESS,
+  GET_TERMS_BY_GROUP_ID_FAILURE,
+  GET_TERMS_BY_GROUP_ID_REQUEST,
+  GET_TERMS_BY_GROUP_ID_SUCCESS
 } from "../utils/constants/action-types/term";
 import * as termService from "../services/termService";
+
+export const getTerms = (termGroupId) => async (dispatch) => {
+  dispatch({type: GET_TERMS_BY_GROUP_ID_REQUEST});
+  try {
+    const terms = await termService.getAllByGroupId(termGroupId);
+    dispatch(getTermsSuccess(terms));
+  } catch (error) {
+    dispatch(getTermsError({error}))
+  }
+}
+
+export const getTermsSuccess = (terms) => {
+  return {
+    type: GET_TERMS_BY_GROUP_ID_SUCCESS,
+    payload: terms
+  }
+}
+
+export const getTermsError = (error) => {
+  return {
+    type: GET_TERMS_BY_GROUP_ID_FAILURE,
+    payload: error
+  }
+}
 
 export const createTerm = (term, allTerms) => async (dispatch) => {
   dispatch({type: CREATE_TERM_REQUEST});
