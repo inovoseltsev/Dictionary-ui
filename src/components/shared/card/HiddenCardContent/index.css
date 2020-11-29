@@ -1,0 +1,20 @@
+.term-card .hidden-content {
+  display: flex;
+  padding: 0 20px 10px;
+}
+
+.term-card .hidden-content div {
+  width: 50%;
+}
+
+.term-card .hidden-content img {
+  width: 84px;
+  height: 60px;
+  border-radius: 4px;
+}
+
+.term-card .hidden-content div p {
+  position: relative;
+  top: 50%;
+  color: rgba(0, 0, 0, 0.54);
+}

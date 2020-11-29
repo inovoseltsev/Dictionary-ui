@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import ContentSide from "../CardContent";
+import CardContent from "../CardContent";
 import Card from "@material-ui/core/Card";
 
 import "./index.css"
@@ -8,10 +8,15 @@ import {DialogContentText} from "@material-ui/core";
 
 export default function AppCard(props) {
 
-  const {cardName, content, onDelete, about, form: Form, onClick} = props;
+  const {
+    cardName, content, onDelete, about,
+    form: Form, onCardOpen, className, isTerm
+  } = props;
 
   const [isPopUpOpen, setPopUpOpen] = useState(false);
   const [isEditable, setEditable] = useState(false);
+  const [isHiddenVisible, setHiddenVisible] = useState(false);
+  const cardHeightStyle = {height: isHiddenVisible ? "210px" : "100px"}
 
   const onEditPress = () => {
     setEditable(true);
@@ -22,16 +27,22 @@ export default function AppCard(props) {
     setPopUpOpen(true);
   }
 
+  const onHiddenContentShow = () => {
+    setHiddenVisible(prevState => !prevState)
+  }
+
   return (
     <>
-      <Card className="app-card">
-        <ContentSide
+      <Card className={`app-card ${className}`}
+            style={isHiddenVisible ? cardHeightStyle : {}}>
+        <CardContent
           cardName={cardName}
           content={content}
           onEdit={onEditPress}
           onDelete={onDeletePress}
           dialogAbout={about}
-          onOpenCard={onClick}
+          onCardOpen={!isTerm ? onCardOpen : onHiddenContentShow}
+          {...{...props, isHiddenVisible, isTerm}}
         />
 
         <PopUp

@@ -1,0 +1,36 @@
+.term-card {
+  width: 100%;
+  height: 100px;
+  max-height: 210px;
+  max-width: 100%;
+  transition: 0.1s;
+  margin-bottom: 2%;
+  position: relative !important;
+}
+
+.term-card .card-actions {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0 8px 5px;
+}
+
+.term-card .default-card-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  display: flex;
+  padding: 10px 20px;
+}
+
+.term-card .default-card-content div {
+  width: 50%;
+}
+
+.term-card .default-card-content h2 {
+  font-size: 18px;
+}
+
+.term-card .default-card-content p {
+  font-size: 14px;
+}

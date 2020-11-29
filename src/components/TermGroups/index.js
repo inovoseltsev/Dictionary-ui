@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import CardsRow from "../CardsRow";
 import AppCard from "../shared/card/AppCard";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteTermGroup, getUserTermGroups} from "../../actions/termGroup";
+import {deleteTermGroup, getTermGroup, getUserTermGroups} from "../../actions/termGroup";
 import createCardRows from "../../helpers/createCardRows";
 import {LOADING} from "../../helpers/requestStatus";
 import Spinner from "../Spinner";
@@ -26,6 +26,11 @@ export default function TermGroups() {
     dispatch(deleteTermGroup(groupId, termGroups));
   }
 
+  const onCardOpen = (groupId) => {
+     dispatch(getTermGroup(groupId));
+     history.push(`/term-groups/${groupId}`);
+  }
+
   return (
     <>
       <TermGroupsControlBar/>
@@ -44,7 +49,7 @@ export default function TermGroups() {
                 groupName={el.name}
                 groupDescription={el.description}
                 groupId={el.id}
-                onClick={() => history.push(`/term-groups/${el.id}`)}
+                onCardOpen={() => onCardOpen(el.id)}
               />)}
             />)}
         </div>
