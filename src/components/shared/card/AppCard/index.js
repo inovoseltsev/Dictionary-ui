@@ -42,7 +42,9 @@ export default function AppCard(props) {
           onDelete={onDeletePress}
           dialogAbout={about}
           onCardOpen={!isTerm ? onCardOpen : onHiddenContentShow}
-          {...{...props, isHiddenVisible, isTerm}}
+          isHiddenVisible={isHiddenVisible}
+          isTerm={isTerm}
+          {...props}
         />
 
         <PopUp
@@ -54,9 +56,9 @@ export default function AppCard(props) {
           {isEditable ?
             <Form
               title={`Edit ${about}`}
-              {...props}
-              isEdit
               closePopUp={() => setPopUpOpen(false)}
+              isEdit
+              {...props}
             />
             :
             <DialogContentText>

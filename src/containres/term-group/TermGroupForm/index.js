@@ -6,7 +6,12 @@ import Form from "../../../components/shared/Form";
 import Input from "../../../components/shared/Input";
 import {Button} from "@material-ui/core";
 
-export default function TermGroupForm({title, isEdit, groupName, groupDescription, groupId, closePopUp}) {
+export default function TermGroupForm(props) {
+
+  const {
+    title, isEdit, groupName,
+    groupDescription, groupId, closePopUp
+  } = props
 
   const allTermGroups = useSelector(state => state.termGroupReducer.termGroups);
   const userId = useSelector(state => state.userReducer.id);

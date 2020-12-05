@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "../../Image";
 
 import "./index.css"
 
@@ -6,8 +7,8 @@ export default function HiddenCardContent({text, image}) {
 
   return (
     <div className="hidden-content">
-      {text ? <div>text</div> : ""}
-      {image ? <div><img src={`data:image/jpeg;base64,${image}`} alt=""/></div> : ""}
+      {text ? <div><p>Keyword: {text}</p></div> : ""}
+      <Image imageContent={image.content} size="small"/>
     </div>
   )
 }

@@ -40,7 +40,6 @@ export default function TermGroups() {
             <CardsRow key={row.id} cards={row.data.map(el =>
               <AppCard
                 key={el.id}
-                id={el.id}
                 cardName={el.name}
                 content={el.description}
                 about="group"

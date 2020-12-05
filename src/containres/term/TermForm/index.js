@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Form from "../../../components/shared/Form";
 import Input from "../../../components/shared/Input";
 import {useForm} from "react-hook-form";
@@ -8,36 +8,49 @@ import Fab from "@material-ui/core/Fab";
 import {AddPhotoAlternateOutlined} from "@material-ui/icons";
 import {createTerm} from "../../../actions/term";
 import {useRouteMatch} from "react-router";
+import Image from "../../../components/shared/Image";
 
 export default function TermForm(props) {
 
   const {
-    title, isEdit, termName, termDefinition, keyword,
-     termId, closePopUp
+    title, isEdit, termName, termDefinition,
+    keyword, image, termId, closePopUp
   } = props;
 
   const dispatch = useDispatch();
   const {handleSubmit, register} = useForm();
   const termGroupId = useRouteMatch().params.id;
   const termsOfGroup = useSelector(state => state.termReducer.terms);
-  const {image} = useSelector(state => state.termReducer.term);
 
-  const [file, setFile] = useState("");
+  const [imageFile, setImageFile] = useState({});
+
+  useEffect(() => {
+    setImageFile(image ? image : {});
+  }, [image])
 
   const onFileChange = (event) => {
-    setFile(event.target.files[0]);
+    const data = event.target.files[0];
+    const file = {name: data.name, content: data}
+    setImageFile(file);
   }
 
-  const onTermCreate = (data) => {
-    const term = {...data, termGroupId};
+  const onTermCreate = (formData) => {
+    const term = {...formData, termGroupId};
     dispatch(createTerm(term, termsOfGroup));
   }
 
+  const onEditTerm = (formData) => {
+    const term = {id: termId, ...formData}
+    dispatch();
+  }
+
   const onSubmit = (data) => {
+    closePopUp();
+    isEdit ? onEditTerm(data) : onTermCreate(data)
   }
 
   return (
-    <Form title={title} onSubmit={handleSubmit(onTermCreate)}>
+    <Form title={title} onSubmit={handleSubmit(onSubmit)}>
       <Input
         name="name"
         label="Term name"
@@ -67,7 +80,6 @@ export default function TermForm(props) {
           name="image"
           id="image"
           type="file"
-          value={isEdit ? image : undefined}
           ref={register}
           accept=".png, .jpg, .jpeg"
           onChange={onFileChange}
@@ -78,8 +90,9 @@ export default function TermForm(props) {
           <Fab component="span" style={{marginLeft: "15px", marginRight: "15px"}}>
             <AddPhotoAlternateOutlined/>
           </Fab>
-          {file.name}
         </label>
+        <Image imageContent={imageFile.content} size="small" isBlob={!image}/>
+        {imageFile.name ? imageFile.name : ""}
       </div>
 
       <Button
@@ -90,7 +103,6 @@ export default function TermForm(props) {
       >
         Submit
       </Button>
-      <img src={image ? `data:image/jpeg;base64,${image}` : ""} width={"100px"} height={"100px"} alt={""}/>
     </Form>
   );
 }

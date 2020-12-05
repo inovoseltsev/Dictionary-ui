@@ -1,0 +1,12 @@
+img {
+  border-radius: 4px;
+}
+
+.small img {
+  width: 84px;
+  height: 60px;
+}
+
+.large img {
+
+}

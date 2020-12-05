@@ -14,7 +14,10 @@ const initialState = {
     name: "",
     definition: "",
     keyword: "",
-    image: ""
+    imageFile: {
+      name: "",
+      content: ""
+    }
   },
   terms: [],
   status: IDLE,

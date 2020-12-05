@@ -7,6 +7,7 @@ import {LOADING} from "../../helpers/requestStatus";
 import Spinner from "../Spinner";
 
 import "./index.css"
+import TermForm from "../../containres/term/TermForm";
 
 export default function Terms() {
 
@@ -26,7 +27,6 @@ export default function Terms() {
           {terms.map(term =>
             <AppCard
               key={term.id}
-              id={term.id}
               className="term-card"
               cardName={term.name}
               content={term.definition}
@@ -35,7 +35,12 @@ export default function Terms() {
               isTerm
               isOpenIconHidden={!term.keyword && !term.image}
               text={term.keyword}
-              image={term.image}
+              image={term.imageFile}
+              form={TermForm}
+              termId={term.id}
+              termName={term.name}
+              termDefinition={term.definition}
+              termKeyword={term.keyword}
             />)}
         </div>
       </>
