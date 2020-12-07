@@ -17,7 +17,7 @@ import HiddenCardContent from "../HiddenCardContent";
 export default function CardContent(props) {
 
   const {
-    cardName, content, onEdit, onDelete, onCardOpen,
+    cardName, content, onEdit, onDeletePress, onCardOpen,
     isOpenIconHidden, isTerm, isHiddenVisible
   } = props;
 
@@ -47,7 +47,7 @@ export default function CardContent(props) {
         <IconButton onClick={onEdit}>
           <Edit fontSize="small"/>
         </IconButton>
-        <IconButton onClick={onDelete}>
+        <IconButton onClick={onDeletePress}>
           <Delete fontSize="small"/>
         </IconButton>
       </CardActions>

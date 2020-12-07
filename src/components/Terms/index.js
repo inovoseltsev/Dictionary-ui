@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 import TermControlBar from "../../containres/term/TermControlBar";
 import {useDispatch, useSelector} from "react-redux";
-import {getTerms} from "../../actions/term";
+import {deleteTerm, getTerms} from "../../actions/term";
 import AppCard from "../shared/card/AppCard";
 import {LOADING} from "../../helpers/requestStatus";
 import Spinner from "../Spinner";
+import TermForm from "../../containres/term/TermForm";
 
 import "./index.css"
-import TermForm from "../../containres/term/TermForm";
 
 export default function Terms() {
 
@@ -19,28 +19,31 @@ export default function Terms() {
     dispatch(getTerms(groupId));
   }, [dispatch, groupId])
 
+  const onTermDelete = (termId) => {
+    dispatch(deleteTerm(termId, terms));
+  }
 
   return (status === LOADING ? <Spinner/> :
       <>
         <TermControlBar/>
         <div className="content-wrapper">
-          {terms.map(term =>
+          {terms.map(el =>
             <AppCard
-              key={term.id}
+              key={el.id}
               className="term-card"
-              cardName={term.name}
-              content={term.definition}
+              cardName={el.name}
+              content={el.definition}
               about="term"
-              onDelete={() => {}}
+              onDelete={() => onTermDelete(el.id)}
               isTerm
-              isOpenIconHidden={!term.keyword && !term.image}
-              text={term.keyword}
-              image={term.imageFile}
+              isOpenIconHidden={!el.keyword && !el.image}
+              text={el.keyword}
+              image={el.imageFile}
               form={TermForm}
-              termId={term.id}
-              termName={term.name}
-              termDefinition={term.definition}
-              termKeyword={term.keyword}
+              termId={el.id}
+              termName={el.name}
+              termDefinition={el.definition}
+              termKeyword={el.keyword}
             />)}
         </div>
       </>

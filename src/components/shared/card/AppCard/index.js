@@ -39,7 +39,7 @@ export default function AppCard(props) {
           cardName={cardName}
           content={content}
           onEdit={onEditPress}
-          onDelete={onDeletePress}
+          onDeletePress={onDeletePress}
           dialogAbout={about}
           onCardOpen={!isTerm ? onCardOpen : onHiddenContentShow}
           isHiddenVisible={isHiddenVisible}

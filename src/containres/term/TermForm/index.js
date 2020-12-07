@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Form from "../../../components/shared/Form";
 import Input from "../../../components/shared/Input";
 import {useForm} from "react-hook-form";
@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Button} from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import {AddPhotoAlternateOutlined} from "@material-ui/icons";
-import {createTerm} from "../../../actions/term";
+import {createTerm, updateTerm} from "../../../actions/term";
 import {useRouteMatch} from "react-router";
 import Image from "../../../components/shared/Image";
 
@@ -14,7 +14,7 @@ export default function TermForm(props) {
 
   const {
     title, isEdit, termName, termDefinition,
-    keyword, image, termId, closePopUp
+    termKeyword, image, termId, closePopUp
   } = props;
 
   const dispatch = useDispatch();
@@ -22,11 +22,7 @@ export default function TermForm(props) {
   const termGroupId = useRouteMatch().params.id;
   const termsOfGroup = useSelector(state => state.termReducer.terms);
 
-  const [imageFile, setImageFile] = useState({});
-
-  useEffect(() => {
-    setImageFile(image ? image : {});
-  }, [image])
+  const [imageFile, setImageFile] = useState(image ? image : {});
 
   const onFileChange = (event) => {
     const data = event.target.files[0];
@@ -40,8 +36,8 @@ export default function TermForm(props) {
   }
 
   const onEditTerm = (formData) => {
-    const term = {id: termId, ...formData}
-    dispatch();
+    const term = {id: termId, ...formData};
+    dispatch(updateTerm(term, termsOfGroup));
   }
 
   const onSubmit = (data) => {
@@ -70,7 +66,7 @@ export default function TermForm(props) {
       <Input
         name="keyword"
         label="Term keyword(s)"
-        value={isEdit ? keyword : ""}
+        value={isEdit ? termKeyword : ""}
         register={register}
       />
 
@@ -91,7 +87,11 @@ export default function TermForm(props) {
             <AddPhotoAlternateOutlined/>
           </Fab>
         </label>
-        <Image imageContent={imageFile.content} size="small" isBlob={!image}/>
+        <Image
+          imageContent={imageFile.content}
+          size="small"
+          isBlob={imageFile.content.size != null}
+        />
         {imageFile.name ? imageFile.name : ""}
       </div>
 
