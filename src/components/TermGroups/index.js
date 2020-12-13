@@ -3,7 +3,7 @@ import CardsRow from "../CardsRow";
 import AppCard from "../shared/card/AppCard";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteTermGroup, getTermGroup, getUserTermGroups} from "../../actions/termGroup";
-import createCardRows from "../../helpers/createCardRows";
+import createRows from "../../helpers/createRows";
 import {LOADING} from "../../helpers/requestStatus";
 import Spinner from "../Spinner";
 import TermGroupsControlBar from "../../containres/term-group/TermGroupsControlBar";
@@ -13,7 +13,7 @@ import {useHistory} from "react-router";
 export default function TermGroups() {
 
   const {termGroups, status} = useSelector(state => state.termGroupReducer);
-  const rows = createCardRows(termGroups);
+  const rows = createRows(termGroups);
   const userId = useSelector(state => state.userReducer.id);
   const dispatch = useDispatch();
   const history = useHistory();

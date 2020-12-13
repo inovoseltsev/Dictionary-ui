@@ -15,6 +15,36 @@ export async function getAllByGroupId(groupId) {
   });
 }
 
+export async function getAnswersForTerm(id) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/answers/${id}`
+  });
+}
+
+export async function getStudySet(groupId) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/term-groups/${groupId}`
+  });
+}
+
+export async function getStudySetWithKeywords(groupId) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/keywords/term-groups/${groupId}`
+  });
+}
+
+export async function getStudySetWithImages(groupId) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/images/term-groups/${groupId}`
+  });
+}
+
+export async function getStudySetInChunks(groupId) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/chunks/term-groups/${groupId}`
+  });
+}
+
 export async function createTerm(term) {
   return await createApiCall({
     url: API_V1_URL + DEFAULT_URL,
@@ -28,6 +58,13 @@ export async function update(id, term) {
     url: API_V1_URL + DEFAULT_URL + id,
     method: "PUT",
     data: term
+  });
+}
+
+export async function updateAwareStatus(id, awareStatus) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/${id}?awareStatus=${awareStatus}`,
+    method: "PUT"
   });
 }
 

@@ -1,4 +1,4 @@
-export default function createCardRows(dataArray) {
+export default function createRows(dataArray) {
   let subArr = [];
   const result = [];
   const lastEl = dataArray[dataArray.length - 1];

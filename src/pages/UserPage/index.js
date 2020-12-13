@@ -5,6 +5,7 @@ import PrivateRoute from "../../components/shared/PrivateRoute";
 import AppRow from "../../components/AppRow";
 import TermGroups from "../../components/TermGroups";
 import Terms from "../../components/Terms";
+import StudyView from "../../components/StudyView";
 
 export default function UserPage() {
 
@@ -27,6 +28,12 @@ export default function UserPage() {
         path="/term-groups/:id"
         isAuth={isAuth}
         component={<AppRow content={<Terms/>}/>}
+        exact
+      />
+      <PrivateRoute
+        path="/term-groups/studying/:id"
+        isAuth={isAuth}
+        component={<AppRow content={<StudyView/>}/>}
         exact
       />
     </Switch>

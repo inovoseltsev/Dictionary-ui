@@ -90,7 +90,7 @@ export default function TermForm(props) {
         <Image
           imageContent={imageFile.content}
           size="small"
-          isBlob={imageFile.content.size != null}
+          isBlob={imageFile.content && imageFile.content.size != null}
         />
         {imageFile.name ? imageFile.name : ""}
       </div>
