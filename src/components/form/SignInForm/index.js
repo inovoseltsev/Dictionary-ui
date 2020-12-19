@@ -9,14 +9,14 @@ import {loginUser} from "../../../actions/auth";
 import Form from "../../shared/Form";
 
 import "./index.css"
+import {useIntl} from "react-intl";
 
 export default function SignInForm() {
 
   const dispatch = useDispatch();
-
   const {isAuth, status} = useSelector(state => state.authReducer);
-
   const {handleSubmit, register} = useForm();
+  const lang = useIntl();
 
   function onSubmit(data) {
     dispatch(loginUser(data));
@@ -31,7 +31,7 @@ export default function SignInForm() {
         </div>
 
         <Input
-          label="Login"
+          label={lang.formatMessage({id: "start-menu-header"})}
           name="login"
           type="text"
           register={register}

@@ -22,7 +22,7 @@ export default function Input(props) {
     setData(event.target.value);
   }
 
-  const handleClickShowPassword = () => {
+  const handleShowPasswordClick = () => {
     setShowPassword(!showPassword);
   }
 
@@ -42,7 +42,7 @@ export default function Input(props) {
       <InputAdornment>
         <IconButton
           aria-label="Toggle password visibility"
-          onClick={handleClickShowPassword}
+          onClick={handleShowPasswordClick}
           style={{width: "50px"}}
         >
           {showPassword ? <VisibilityOff/> : <Visibility/>}

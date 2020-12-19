@@ -1,0 +1,31 @@
+.profile-title {
+  text-align: center;
+  font-size: 27px;
+  color: #303545;
+  margin-top: 2%;
+  margin-bottom: 4%;
+}
+
+.profile-form {
+  width: 100%;
+  max-width: 100%;
+  padding: 1.5rem;
+}
+
+.profile-form.user-info button {
+  width: 170px;
+}
+
+.profile-form .form-title {
+  text-align: left;
+  padding-top: 0;
+  color: #303545;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.profile-form .form-description {
+  font-size: 16px;
+  color: #303545;
+}

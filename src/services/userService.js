@@ -2,6 +2,12 @@ import createApiCall, {API_V1_URL} from "../helpers/createApiCall";
 
 const DEFAULT_URL = "users/";
 
+export async function getById(id) {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `${id}/`
+  });
+}
+
 export async function create(user) {
   return await createApiCall({
     url: API_V1_URL + DEFAULT_URL + "registration",
@@ -11,8 +17,10 @@ export async function create(user) {
   });
 }
 
-export async function getById(id) {
+export async function update(user) {
   return await createApiCall({
-    url: API_V1_URL + DEFAULT_URL + `${id}/`
-  });
+    url: API_V1_URL + DEFAULT_URL + user.id,
+    method: "PUT",
+    data: user
+  })
 }

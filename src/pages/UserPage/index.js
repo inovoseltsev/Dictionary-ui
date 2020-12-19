@@ -6,6 +6,7 @@ import AppRow from "../../components/AppRow";
 import TermGroups from "../../components/TermGroups";
 import Terms from "../../components/Terms";
 import StudyView from "../../components/StudyView";
+import Profile from "../../components/Profile";
 
 export default function UserPage() {
 
@@ -35,6 +36,11 @@ export default function UserPage() {
         isAuth={isAuth}
         component={<AppRow content={<StudyView/>}/>}
         exact
+      />
+      <PrivateRoute
+        path="/profile"
+        isAuth={isAuth}
+        component={<AppRow content={<Profile/>}/>}
       />
     </Switch>
   )
