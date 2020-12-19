@@ -1,7 +1,7 @@
 import React from "react";
 import {Button} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
-import {getStudySet} from "../../actions/term";
+import {setStudyMode} from "../../actions/term";
 import {useHistory} from "react-router";
 import {DEFAULT, IMAGES, KEYWORDS} from "../../helpers/studyMode";
 
@@ -14,7 +14,7 @@ export default function StudyMethodsMenu() {
   const history = useHistory();
 
   const onMethodChoose = (mode) => {
-    dispatch(getStudySet(groupId, mode));
+    dispatch(setStudyMode(mode));
     history.push(`/term-groups/studying/${groupId}`);
   }
 
@@ -22,7 +22,10 @@ export default function StudyMethodsMenu() {
     {id: 0, name: "Usual terms", onChoose: () => onMethodChoose(DEFAULT)},
     {id: 1, name: "Keywords", onChoose: () => onMethodChoose(KEYWORDS)},
     {id: 2, name: "Images", onChoose: () => onMethodChoose(IMAGES)},
-    {id: 3, name: "Chunks", onChoose: () => {}}
+    {
+      id: 3, name: "Chunks", onChoose: () => {
+      }
+    }
   ];
 
   return (

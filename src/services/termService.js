@@ -61,9 +61,9 @@ export async function update(id, term) {
   });
 }
 
-export async function updateAwareStatus(id, awareStatus) {
-  return await createApiCall({
-    url: API_V1_URL + DEFAULT_URL + `studying/${id}?awareStatus=${awareStatus}`,
+export function updateAwareStatus(id, awareStatus) {
+  return createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/aware-status/${id}?awareStatus=${awareStatus}`,
     method: "PUT"
   });
 }

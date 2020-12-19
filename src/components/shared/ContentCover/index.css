@@ -1,0 +1,12 @@
+.app-row .right .content-cover {
+  overflow-y: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 100%;
+  padding: 2% 2% 0;
+}
+
+.app-row .right .content-cover::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0;
+}

@@ -4,11 +4,10 @@ import AppCard from "../shared/card/AppCard";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteTermGroup, getTermGroup, getUserTermGroups} from "../../actions/termGroup";
 import createRows from "../../helpers/createRows";
-import {LOADING} from "../../helpers/requestStatus";
-import Spinner from "../Spinner";
 import TermGroupsControlBar from "../../containres/term-group/TermGroupsControlBar";
 import TermGroupForm from "../../containres/term-group/TermGroupForm";
 import {useHistory} from "react-router";
+import ContentCover from "../shared/ContentCover";
 
 export default function TermGroups() {
 
@@ -27,32 +26,30 @@ export default function TermGroups() {
   }
 
   const onCardOpen = (groupId) => {
-     dispatch(getTermGroup(groupId));
-     history.push(`/term-groups/${groupId}`);
+    dispatch(getTermGroup(groupId));
+    history.push(`/term-groups/${groupId}`);
   }
 
   return (
     <>
       <TermGroupsControlBar/>
-      {status === LOADING ? <Spinner/> :
-        <div className="content-wrapper">
-          {rows.map(row =>
-            <CardsRow key={row.id} cards={row.data.map(el =>
-              <AppCard
-                key={el.id}
-                cardName={el.name}
-                content={el.description}
-                about="group"
-                onDelete={() => onGroupDelete(el.id)}
-                form={TermGroupForm}
-                groupName={el.name}
-                groupDescription={el.description}
-                groupId={el.id}
-                onCardOpen={() => onCardOpen(el.id)}
-              />)}
+      <ContentCover status={status}>
+        {rows.map(row =>
+          <CardsRow key={row.id} cards={row.data.map(el =>
+            <AppCard
+              key={el.id}
+              cardName={el.name}
+              content={el.description}
+              about="group"
+              onDelete={() => onGroupDelete(el.id)}
+              form={TermGroupForm}
+              groupName={el.name}
+              groupDescription={el.description}
+              groupId={el.id}
+              onCardOpen={() => onCardOpen(el.id)}
             />)}
-        </div>
-      }
+          />)}
+      </ContentCover>
     </>
   );
 }

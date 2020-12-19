@@ -13,3 +13,8 @@
 .MuiDialogTitle-root {
   text-align: center;
 }
+
+.MuiDialogContent-root::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0;
+}

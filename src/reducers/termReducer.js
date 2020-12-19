@@ -6,6 +6,7 @@ import {
   DELETE_TERM_FAILURE,
   DELETE_TERM_REQUEST,
   DELETE_TERM_SUCCESS,
+  FINISH_STUDYING,
   GET_ANSWERS_FOR_TERM_FAILURE,
   GET_ANSWERS_FOR_TERM_REQUEST,
   GET_ANSWERS_FOR_TERM_SUCCESS,
@@ -21,6 +22,7 @@ import {
   GET_TERMS_BY_GROUP_ID_FAILURE,
   GET_TERMS_BY_GROUP_ID_REQUEST,
   GET_TERMS_BY_GROUP_ID_SUCCESS,
+  SET_STUDY_MODE,
   UPDATE_TERM_AWARE_STATUS_FAILURE,
   UPDATE_TERM_AWARE_STATUS_REQUEST,
   UPDATE_TERM_AWARE_STATUS_SUCCESS,
@@ -40,6 +42,7 @@ const initialState = {
       name: "",
       content: ""
     },
+    awareStatus: "",
     answers: []
   },
   terms: [],
@@ -67,6 +70,22 @@ export default function termReducer(state = initialState, action) {
         error: null,
         status: SUCCEED
       }
+
+    case GET_TERMS_BY_GROUP_ID_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        status: FAILED
+      }
+
+    case SET_STUDY_MODE: {
+      return {
+        ...state,
+        studyMode: action.payload,
+        error: null,
+        status: SUCCEED
+      }
+    }
 
     case GET_STUDY_SET_REQUEST: {
       return {
@@ -139,20 +158,12 @@ export default function termReducer(state = initialState, action) {
     }
 
     case GET_STUDY_SET_WITH_IMAGES_FAILURE: {
-      return{
-        ...state,
-        error: action.payload,
-        status: FAILED
-      }
-    }
-
-
-    case GET_TERMS_BY_GROUP_ID_FAILURE:
       return {
         ...state,
         error: action.payload,
         status: FAILED
       }
+    }
 
     case GET_ANSWERS_FOR_TERM_REQUEST:
       return {
@@ -175,6 +186,15 @@ export default function termReducer(state = initialState, action) {
         error: action.payload,
         status: FAILED
       }
+
+    case FINISH_STUDYING: {
+      return {
+        ...state,
+        studySet: [],
+        error: null,
+        status: SUCCEED
+      }
+    }
 
     case CREATE_TERM_REQUEST:
       return {
@@ -230,6 +250,7 @@ export default function termReducer(state = initialState, action) {
     case UPDATE_TERM_AWARE_STATUS_SUCCESS:
       return {
         ...state,
+        studySet: action.payload,
         error: null,
         status: SUCCEED
       }

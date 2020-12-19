@@ -8,5 +8,6 @@ img {
 }
 
 .large img {
-
+  width: 252px;
+  height: 180px;
 }

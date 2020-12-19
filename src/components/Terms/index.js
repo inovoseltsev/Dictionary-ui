@@ -3,11 +3,10 @@ import TermControlBar from "../../containres/term/TermControlBar";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteTerm, getTerms} from "../../actions/term";
 import AppCard from "../shared/card/AppCard";
-import {LOADING} from "../../helpers/requestStatus";
-import Spinner from "../Spinner";
 import TermForm from "../../containres/term/TermForm";
 
 import "./index.css"
+import ContentCover from "../shared/ContentCover";
 
 export default function Terms() {
 
@@ -23,29 +22,29 @@ export default function Terms() {
     dispatch(deleteTerm(termId, terms));
   }
 
-  return (status === LOADING ? <Spinner/> :
-      <>
-        <TermControlBar/>
-        <div className="content-wrapper">
-          {terms.map(el =>
-            <AppCard
-              key={el.id}
-              className="term-card"
-              cardName={el.name}
-              content={el.definition}
-              about="term"
-              onDelete={() => onTermDelete(el.id)}
-              isTerm
-              isOpenIconHidden={!el.keyword && !el.image}
-              text={el.keyword}
-              image={el.imageFile}
-              form={TermForm}
-              termId={el.id}
-              termName={el.name}
-              termDefinition={el.definition}
-              termKeyword={el.keyword}
-            />)}
-        </div>
-      </>
+  return (
+    <>
+      <TermControlBar/>
+      <ContentCover status={status}>
+        {terms.map(el =>
+          <AppCard
+            key={el.id}
+            className="term-card"
+            cardName={el.name}
+            content={el.definition}
+            about="term"
+            onDelete={() => onTermDelete(el.id)}
+            isTerm
+            isOpenIconHidden={!el.keyword && !el.image}
+            text={el.keyword}
+            image={el.imageFile}
+            form={TermForm}
+            termId={el.id}
+            termName={el.name}
+            termDefinition={el.definition}
+            termKeyword={el.keyword}
+          />)}
+      </ContentCover>
+    </>
   );
 }

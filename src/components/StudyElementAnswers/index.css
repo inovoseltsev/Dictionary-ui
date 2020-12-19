@@ -1,0 +1,33 @@
+.answer-variants {
+  width: 468px;
+  height: 175px;
+  display: flex;
+  margin: 3vh auto 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.answer-variants .answer-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.answer-variants .term-answer {
+  width: 212px;
+  height: 69px;
+  border: 1px solid #2daee5;
+  border-radius: 4px;
+  transition: 0.3s;
+  display: flex;
+}
+
+.term-answer .answer-content {
+  margin: auto;
+}
+
+.answer-variants .term-answer:hover {
+  cursor: pointer;
+  background-color: #2daee5;
+  color: #ffffff;
+}

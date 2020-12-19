@@ -5,6 +5,7 @@ import {
   DELETE_TERM_FAILURE,
   DELETE_TERM_REQUEST,
   DELETE_TERM_SUCCESS,
+  FINISH_STUDYING,
   GET_ANSWERS_FOR_TERM_FAILURE,
   GET_ANSWERS_FOR_TERM_REQUEST,
   GET_ANSWERS_FOR_TERM_SUCCESS,
@@ -20,6 +21,7 @@ import {
   GET_TERMS_BY_GROUP_ID_FAILURE,
   GET_TERMS_BY_GROUP_ID_REQUEST,
   GET_TERMS_BY_GROUP_ID_SUCCESS,
+  SET_STUDY_MODE,
   UPDATE_TERM_AWARE_STATUS_FAILURE,
   UPDATE_TERM_AWARE_STATUS_REQUEST,
   UPDATE_TERM_AWARE_STATUS_SUCCESS,
@@ -79,6 +81,12 @@ const getTermAnswersError = (error) => {
   }
 }
 
+export const setStudyMode = (method) => {
+  return {
+    type: SET_STUDY_MODE,
+    payload: method
+  }
+}
 
 export const getStudySet = (termGroupId, mode) => (dispatch) => {
   if (mode === KEYWORDS) {
@@ -166,6 +174,10 @@ const getStudySetWithImagesError = (error) => {
   }
 }
 
+export const finishStudying = () => {
+  return {type: FINISH_STUDYING}
+}
+
 
 export const createTerm = (term, allTerms) => async (dispatch) => {
   dispatch({type: CREATE_TERM_REQUEST});
@@ -236,13 +248,22 @@ const updateTermError = (error) => {
 }
 
 
-export const updateAwareStatus = (termId, status) => async (dispatch) => {
+export const updateAwareStatus = (termId, status, studySet) => async (dispatch) => {
   dispatch({type: UPDATE_TERM_AWARE_STATUS_REQUEST});
   try {
     await termService.updateAwareStatus(termId, status);
-    dispatch({type: UPDATE_TERM_AWARE_STATUS_SUCCESS});
+    dispatch(updateAwareStatusSuccess(termId, status, studySet));
   } catch (error) {
     dispatch(updateAwareStatusError({error}));
+  }
+}
+
+
+const updateAwareStatusSuccess = (termId, status, studySet) => {
+  const updatedSet = studySet.filter(el => el.id !== termId);
+  return {
+    type: UPDATE_TERM_AWARE_STATUS_SUCCESS,
+    payload: updatedSet
   }
 }
 
