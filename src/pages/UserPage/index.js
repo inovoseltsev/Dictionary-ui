@@ -7,6 +7,7 @@ import TermGroups from "../../components/TermGroups";
 import Terms from "../../components/Terms";
 import StudyView from "../../components/StudyView";
 import Profile from "../../components/Profile";
+import UsersView from "../../components/UsersView";
 
 export default function UserPage() {
 
@@ -41,6 +42,11 @@ export default function UserPage() {
         path="/profile"
         isAuth={isAuth}
         component={<AppRow content={<Profile/>}/>}
+      />
+      <PrivateRoute
+        path="/users"
+        isAuth={isAuth}
+        component={<AppRow content={<UsersView/>}/>}
       />
     </Switch>
   )

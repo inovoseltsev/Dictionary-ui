@@ -8,6 +8,12 @@ export async function getById(id) {
   });
 }
 
+export async function getAll() {
+  return await createApiCall({
+    url: API_V1_URL + DEFAULT_URL
+  });
+}
+
 export async function create(user) {
   return await createApiCall({
     url: API_V1_URL + DEFAULT_URL + "registration",
@@ -22,5 +28,5 @@ export async function update(user) {
     url: API_V1_URL + DEFAULT_URL + user.id,
     method: "PUT",
     data: user
-  })
+  });
 }

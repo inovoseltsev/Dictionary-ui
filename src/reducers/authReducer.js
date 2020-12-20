@@ -7,7 +7,12 @@ import {
 import {FAILED, IDLE, LOADING, SUCCEED} from "../helpers/requestStatus";
 
 const initialState = {
-  authData: null,
+  authData: {
+    userId: 0,
+    role: "",
+    createdAt: 0,
+    exp: 0
+  },
   isAuth: false,
   status: IDLE,
   error: null

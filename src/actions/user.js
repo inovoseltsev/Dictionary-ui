@@ -5,6 +5,9 @@ import {
   GET_USER_FAILURE,
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
+  GET_USERS_FAILURE,
+  GET_USERS_REQUEST,
+  GET_USERS_SUCCESS,
   SET_LOCALE,
   UPDATE_USER_FAILURE,
   UPDATE_USER_REQUEST,
@@ -34,6 +37,31 @@ const getUserError = (error) => {
     type: GET_USER_FAILURE,
     payload: error
   };
+}
+
+
+export const getUsers = () => async (dispatch) => {
+  dispatch({type: GET_USERS_REQUEST});
+  try {
+    const users = await userService.getAll();
+    dispatch(getUsersSuccess(users));
+  } catch (error) {
+    dispatch(getUsersError({error}));
+  }
+}
+
+const getUsersSuccess = (users) => {
+  return {
+    type: GET_USERS_SUCCESS,
+    payload: users
+  }
+}
+
+const getUsersError = (error) => {
+  return {
+    type: GET_USERS_FAILURE,
+    payload: error
+  }
 }
 
 

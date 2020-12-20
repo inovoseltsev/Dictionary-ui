@@ -37,6 +37,14 @@
   "side-bar-folders-item": "Папки",
   "side-bar-profile-item": "Профіль",
   "side-bar-logout-item": "Вихід",
+  "side-bar-users-item": "Користувачі",
+
+  "users-menu-title": "Користувачі системи",
+  "users-table-header1": "ID",
+  "users-table-header2": "Ім'я",
+  "users-table-header3": "Прізвище",
+  "users-table-header4": "Логін",
+  "users-table-header5": "Статус",
 
   "term-group-name": "групу",
   "term-group-create-title": "Створити групу",

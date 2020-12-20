@@ -5,6 +5,9 @@ import {
   GET_USER_FAILURE,
   GET_USER_REQUEST,
   GET_USER_SUCCESS,
+  GET_USERS_FAILURE,
+  GET_USERS_REQUEST,
+  GET_USERS_SUCCESS,
   SET_LOCALE,
   UPDATE_USER_FAILURE,
   UPDATE_USER_REQUEST,
@@ -17,6 +20,7 @@ const initialState = {
   id: null,
   firstName: "",
   lastName: "",
+  users: [],
   locale: EN,
   status: IDLE,
   error: null
@@ -47,6 +51,28 @@ export default function userReducer(state = initialState, action) {
         error: action.payload,
         status: FAILED
       };
+
+    case GET_USERS_REQUEST:
+      return {
+        ...state,
+        error: null,
+        status: LOADING
+      }
+
+    case GET_USERS_SUCCESS:
+      return {
+        ...state,
+        users: action.payload,
+        error: null,
+        status: SUCCEED
+      }
+
+    case GET_USERS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        status: FAILED
+      }
 
     case CREATE_USER_REQUEST:
       return {

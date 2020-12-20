@@ -37,6 +37,14 @@
   "side-bar-folders-item": "Folders",
   "side-bar-profile-item": "Profile",
   "side-bar-logout-item": "Logout",
+  "side-bar-users-item": "Users",
+
+  "users-menu-title": "System users",
+  "users-table-header1": "ID",
+  "users-table-header2": "First name",
+  "users-table-header3": "Last name",
+  "users-table-header4": "login",
+  "users-table-header5": "Status",
 
   "term-group-name": "group",
   "term-group-create-title": "Create group",
