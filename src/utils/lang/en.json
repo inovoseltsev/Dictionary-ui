@@ -1,15 +1,31 @@
 {
   "start-menu-header": "Dicter",
   "start-menu-tagline": "Study with us",
-  "start-menu-sign-in": "Sign-in",
-  "start-menu-sign-up": "Sign-up",
+  "sign-in-title": "Sign in",
+  "sign-up-title": "Sign up",
 
-  "sign-in-form-title": "Sign in",
   "sign-in-form-login": "Login",
   "sign-in-form-password": "Password",
+  "sign-in-form-question": "Don't have an account? ",
 
-  "sign-up-form-title": "Sign up",
   "sign-up-form-first-name": "First name",
-  "sign-up-form-last-name": "Last name"
+  "sign-up-form-last-name": "Last name",
+  "sign-up-form-login": "Login",
+  "sign-up-form-password": "Password",
+  "sign-up-form-repeat-password": "Repeat password",
+  "sign-up-form-question": "Have an account? ",
+
+  "first-name-validation-message": "Incorrect first name",
+  "last-name-validation-message": "Incorrect last name",
+  "login-validation-message": "Incorrect login",
+  "password-validation-message": "Password must contain one capital and one number",
+  "repeat-password-validation-message": "Passwords don't match",
+  "login-error-message": "Passwords don't match",
+
+  "side-bar": "",
+
+  "term-group-create-title": "Create group"
+
+
 }
 

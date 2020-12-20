@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import Input from "../../shared/Input";
 import {
@@ -6,13 +6,6 @@ import {
   NAME_PATTERN,
   PASSWORD_PATTERN
 } from "../../../utils/constants/validation/regexp";
-import {
-  INVALID_FIRST_NAME_MESSAGE,
-  INVALID_LAST_NAME_MESSAGE,
-  INVALID_LOGIN_MESSAGE,
-  INVALID_PASSWORD_MESSAGE,
-  INVALID_REPEATED_PASSWORD_MESSAGE
-} from "../../../utils/constants/validation/validation-messages";
 
 import "./index.css"
 import {useDispatch, useSelector} from "react-redux";
@@ -21,6 +14,8 @@ import {createUser} from "../../../actions/user";
 import {LOADING} from "../../../helpers/requestStatus";
 import Spinner from "../../Spinner";
 import Form from "../../shared/Form";
+import {LanguageMessageContext} from "../../../context";
+import {FormattedMessage} from "react-intl";
 
 export default function SignUpForm() {
 
@@ -29,6 +24,7 @@ export default function SignUpForm() {
   const {handleSubmit, register, errors} = useForm();
   const {firstName, lastName, login, password} = errors;
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const getLangMessage = useContext(LanguageMessageContext);
 
   const onSubmit = (data) => {
     const {password, repeatedPassword} = data;
@@ -42,67 +38,72 @@ export default function SignUpForm() {
 
   return (
     status === LOADING ? <Spinner/> :
-      <Form className="sign-up-form" title="Sign up" onSubmit={handleSubmit(onSubmit)}>
+      <Form
+        className="sign-up-form"
+        title={getLangMessage("sign-up-title")}
+        onSubmit={handleSubmit(onSubmit)}>
 
         <Input
-          label="First name"
+          label={getLangMessage("sign-up-form-first-name")}
           name="firstName"
           type="text"
           register={register}
           error={firstName}
           inputPattern={NAME_PATTERN}
-          invalidDataMessage={INVALID_FIRST_NAME_MESSAGE}
+          invalidDataMessage={getLangMessage("first-name-validation-message")}
           required
         />
         <Input
-          label="Last name"
+          label={getLangMessage("sign-up-form-last-name")}
           name="lastName"
           type="text"
           register={register}
           error={lastName}
           inputPattern={NAME_PATTERN}
-          invalidDataMessage={INVALID_LAST_NAME_MESSAGE}
+          invalidDataMessage={getLangMessage("last-name-validation-message")}
           required
         />
         <Input
-          label="Login"
+          label={getLangMessage("sign-up-form-login")}
           name="login"
           type="text"
           register={register}
           error={login}
           inputPattern={LOGIN_PATTERN}
-          invalidDataMessage={INVALID_LOGIN_MESSAGE}
+          invalidDataMessage={getLangMessage("login-validation-message")}
           required
         />
         <Input
-          label="Password"
+          label={getLangMessage("sign-up-form-password")}
           name="password"
           type="password"
           register={register}
           error={password}
           inputPattern={PASSWORD_PATTERN}
-          invalidDataMessage={INVALID_PASSWORD_MESSAGE}
+          invalidDataMessage={getLangMessage("password-validation-message")}
           required
         />
         <Input
-          label="Repeat password"
+          label={getLangMessage("sign-up-form-repeat-password")}
           name="repeatedPassword"
           type="password"
           register={register}
           required
         />
         <div className="small text-danger">
-          {passwordsMatch ? "" : INVALID_REPEATED_PASSWORD_MESSAGE}
+          {passwordsMatch ? "" : getLangMessage("repeat-password-validation-message")}
         </div>
 
         <div className="sign-up-button-wrapper">
           <button type="submit" className="btn btn-primary btn-raised">
-            Sign up
+            <FormattedMessage id="sign-up-title"/>
           </button>
         </div>
 
         <div className="sign-in-message-wrapper">
-          <p>Have an account? <Link to="/sign-in">Sign in</Link></p>
+          <p><FormattedMessage id="sign-up-form-question"/>
+            <Link to="/sign-in"><FormattedMessage id="sign-in-title"/></Link>
+          </p>
         </div>
       </Form>
   )

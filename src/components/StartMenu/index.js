@@ -15,10 +15,10 @@ export default function StartMenu() {
         </p>
         <div className="start-menu-buttons">
           <Link to="/sign-in">
-            <button><FormattedMessage id="start-menu-sign-in"/></button>
+            <button><FormattedMessage id="sign-in-title"/></button>
           </Link>
           <Link to="/sign-up">
-            <button><FormattedMessage id="start-menu-sign-up"/></button>
+            <button><FormattedMessage id="sign-up-title"/></button>
           </Link>
         </div>
       </div>

@@ -1,10 +1,9 @@
 import React, {useEffect} from "react";
-import StartPage from "./pages/StartPage";
 import {useDispatch, useSelector} from "react-redux";
 import {refreshUser} from "./actions/auth";
-import UserPage from "./pages/UserPage";
 import {IntlProvider} from "react-intl";
 import {getLanguage} from "./helpers/languageChooser";
+import AppStarter from "./AppStarter";
 
 export default function App() {
 
@@ -18,10 +17,7 @@ export default function App() {
 
   return (
     <IntlProvider locale={locale} messages={language}>
-      <div className="App">
-        <StartPage/>
-        <UserPage/>
-      </div>
+      <AppStarter/>
     </IntlProvider>
   );
 }

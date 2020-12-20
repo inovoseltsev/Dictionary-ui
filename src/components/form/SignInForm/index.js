@@ -1,22 +1,22 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Link, Redirect} from "react-router-dom";
 import Input from "../../shared/Input";
 import {FAILED} from "../../../helpers/requestStatus";
-import {LOGIN_ERROR} from "../../../utils/constants/messages/error-messages";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {loginUser} from "../../../actions/auth";
 import Form from "../../shared/Form";
+import {FormattedMessage} from "react-intl";
+import {LanguageMessageContext} from "../../../context";
 
 import "./index.css"
-import {useIntl} from "react-intl";
 
 export default function SignInForm() {
 
   const dispatch = useDispatch();
   const {isAuth, status} = useSelector(state => state.authReducer);
   const {handleSubmit, register} = useForm();
-  const lang = useIntl();
+  const getLangMessage = useContext(LanguageMessageContext);
 
   function onSubmit(data) {
     dispatch(loginUser(data));
@@ -24,14 +24,17 @@ export default function SignInForm() {
 
   return (
     isAuth ? <Redirect to="/home"/> :
-      <Form className="sign-in-form" title="Sign in" onSubmit={handleSubmit(onSubmit)}>
+      <Form
+        className="sign-in-form"
+        title={getLangMessage("sign-in-title")}
+        onSubmit={handleSubmit(onSubmit)}>
 
         <div className="small text-danger text-center">
-          {status === FAILED ? LOGIN_ERROR : ""}
+          {status === FAILED ? getLangMessage("login-error-message") : ""}
         </div>
 
         <Input
-          label={lang.formatMessage({id: "start-menu-header"})}
+          label={getLangMessage("sign-in-form-login")}
           name="login"
           type="text"
           register={register}
@@ -39,7 +42,7 @@ export default function SignInForm() {
         />
 
         <Input
-          label="Password"
+          label={getLangMessage("sign-in-form-password")}
           name="password"
           type="password"
           register={register}
@@ -47,15 +50,16 @@ export default function SignInForm() {
         />
 
         <div className="sign-in-button-wrapper">
-          <button
-            type="submit"
-            className="btn btn-primary btn-raised">
-            Sign in
+          <button type="submit" className="btn btn-primary btn-raised">
+            <FormattedMessage id="sign-in-title"/>
           </button>
         </div>
 
         <div className="sign-up-message-wrapper">
-          <p>Don't have an account? <Link to="/sign-up">Sign up</Link>
+          <p><FormattedMessage id="sign-in-form-question"/>
+            <Link to="/sign-up">
+              <FormattedMessage id="sign-up-title"/>
+            </Link>
           </p>
         </div>
       </Form>
