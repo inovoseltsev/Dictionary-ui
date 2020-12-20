@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {refreshUser} from "./actions/auth";
 import {IntlProvider} from "react-intl";
 import {getLanguage} from "./helpers/languageChooser";
-import AppStarter from "./AppStarter";
+import AppStarter from "./components/AppStarter";
 
 export default function App() {
 

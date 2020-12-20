@@ -4,6 +4,7 @@ import {Button} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router";
 import {finishStudying} from "../../actions/term";
+import {FormattedMessage} from "react-intl";
 
 export default function StudyControlBar() {
 
@@ -24,7 +25,7 @@ export default function StudyControlBar() {
           variant="contained"
           onClick={() => onFinish()}
         >
-          Finish
+          <FormattedMessage id="finish-group-button-name"/>
         </Button>
       </ContentControlBar>
     </>

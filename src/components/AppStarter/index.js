@@ -1,15 +1,15 @@
 import React from "react";
-import StartPage from "../pages/StartPage";
-import UserPage from "../pages/UserPage";
+import StartPage from "../../pages/StartPage";
+import UserPage from "../../pages/UserPage";
 import {useIntl} from "react-intl";
-import {LanguageMessageContext} from "../context"
+import {LanguageMessageContext} from "../../context"
 
 export default function AppStarter() {
 
   const lang = useIntl();
 
-  const getLangMessage = (id) => {
-    return lang.formatMessage({id})
+  const getLangMessage = (id, objects) => {
+    return lang.formatMessage({id}, objects)
   }
 
   return (

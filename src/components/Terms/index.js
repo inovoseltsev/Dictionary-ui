@@ -1,18 +1,20 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import TermControlBar from "../../containres/term/TermControlBar";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteTerm, getTerms} from "../../actions/term";
 import AppCard from "../shared/card/AppCard";
 import TermForm from "../../containres/term/TermForm";
+import ContentCover from "../shared/ContentCover";
+import {LanguageMessageContext} from "../../context";
 
 import "./index.css"
-import ContentCover from "../shared/ContentCover";
 
 export default function Terms() {
 
+  const dispatch = useDispatch();
   const groupId = useSelector(state => state.termGroupReducer.termGroup.id);
   const {terms, status} = useSelector(state => state.termReducer);
-  const dispatch = useDispatch();
+  const getLangMessage = useContext(LanguageMessageContext);
 
   useEffect(() => {
     dispatch(getTerms(groupId));
@@ -32,7 +34,7 @@ export default function Terms() {
             className="term-card"
             cardName={el.name}
             content={el.definition}
-            about="term"
+            about={getLangMessage("term-name")}
             onDelete={() => onTermDelete(el.id)}
             isTerm
             isOpenIconHidden={!el.keyword && !el.image}

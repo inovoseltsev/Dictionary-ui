@@ -1,16 +1,18 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import ContentControlBar from "../../../components/shared/ContentControlBar";
 import {Button} from "@material-ui/core";
 import {CreateOutlined, LibraryBooksRounded} from "@material-ui/icons";
 import PopUp from "../../../components/shared/PopUp";
 import TermForm from "../TermForm";
 import StudyMethodsMenu from "../../../components/StudyMethodsMenu";
+import {FormattedMessage} from "react-intl";
+import {LanguageMessageContext} from "../../../context";
 
 export default function TermControlBar() {
 
   const [isPopUpOpen, setPopUpOpen] = useState(false);
-
   const [popUpContentName, setPopUpContentName] = useState("form");
+  const getLangMessage = useContext(LanguageMessageContext);
 
   const openPopUp = (name) => {
     setPopUpContentName(name);
@@ -26,7 +28,7 @@ export default function TermControlBar() {
           onClick={() => openPopUp("form")}
           startIcon={<CreateOutlined fontSize="small"/>}
         >
-          Create term
+          <FormattedMessage id="term-create-title"/>
         </Button>
         <Button
           color="primary"
@@ -34,7 +36,7 @@ export default function TermControlBar() {
           onClick={() => openPopUp("study")}
           startIcon={<LibraryBooksRounded fontSize="small"/>}
         >
-          Study group
+          <FormattedMessage id="study-group-name"/>
         </Button>
       </ContentControlBar>
 
@@ -44,7 +46,9 @@ export default function TermControlBar() {
       >
         {
           popUpContentName === "form"
-            ? <TermForm title="Create term" closePopUp={() => setPopUpOpen(false)}/>
+            ? <TermForm
+              title={getLangMessage("term-create-title")}
+              closePopUp={() => setPopUpOpen(false)}/>
             : <StudyMethodsMenu/>
         }
       </PopUp>

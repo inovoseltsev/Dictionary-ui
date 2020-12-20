@@ -1,12 +1,19 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getStudySet, getTermAnswers, updateAwareStatus} from "../../actions/term";
+import {
+  getStudySet,
+  getTermAnswers,
+  resetTermsAwareStatus,
+  updateAwareStatus
+} from "../../actions/term";
 import {BAD, GOOD, PERFECT} from "../../helpers/termAwareStatus";
 import createRows from "../../helpers/createRows";
 import StudyControlBar from "../../containres/StudyControlBar";
 import StudyElementAnswers from "../StudyElementAnswers";
 import ContentCover from "../shared/ContentCover";
 import StudyElement from "../StudyElement";
+import {Button} from "@material-ui/core";
+import {FormattedMessage} from "react-intl";
 
 import "./index.css"
 
@@ -45,12 +52,25 @@ export default function StudyView() {
     }
   }
 
+  const onResetAwareStatusForGroup = () => {
+    dispatch(resetTermsAwareStatus(groupId, studyMode));
+  }
+
   return (
     <>
       <StudyControlBar/>
       <ContentCover status={status}>
-        {isStudSetKnown
-          ? <div>You already know this set. Dou want to reset?</div>
+        {isStudSetKnown ?
+          <div>
+            <p><FormattedMessage id="group-known-message"/></p>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={onResetAwareStatusForGroup}>
+
+              <FormattedMessage id="reset-study-group-button-name"/>
+            </Button>
+          </div>
           : <>
             <StudyElement
               studyElement={studyElement}

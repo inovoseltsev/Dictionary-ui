@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import Form from "../../../components/shared/Form";
 import Input from "../../../components/shared/Input";
 import {useForm} from "react-hook-form";
@@ -9,6 +9,8 @@ import {AddPhotoAlternateOutlined} from "@material-ui/icons";
 import {createTerm, updateTerm} from "../../../actions/term";
 import {useRouteMatch} from "react-router";
 import Image from "../../../components/shared/Image";
+import {LanguageMessageContext} from "../../../context";
+import {FormattedMessage} from "react-intl";
 
 export default function TermForm(props) {
 
@@ -21,6 +23,7 @@ export default function TermForm(props) {
   const {handleSubmit, register} = useForm();
   const termGroupId = useRouteMatch().params.id;
   const termsOfGroup = useSelector(state => state.termReducer.terms);
+  const getLangMessage = useContext(LanguageMessageContext);
 
   const [imageFile, setImageFile] = useState(image ? image : {});
 
@@ -49,7 +52,7 @@ export default function TermForm(props) {
     <Form title={title} onSubmit={handleSubmit(onSubmit)}>
       <Input
         name="name"
-        label="Term name"
+        label={getLangMessage("term-form-name")}
         value={isEdit ? termName : ""}
         register={register}
         required
@@ -57,7 +60,7 @@ export default function TermForm(props) {
 
       <Input
         name="definition"
-        label="Term definition"
+        label={getLangMessage("term-form-definition")}
         value={isEdit ? termDefinition : ""}
         register={register}
         required
@@ -65,7 +68,7 @@ export default function TermForm(props) {
 
       <Input
         name="keyword"
-        label="Term keyword(s)"
+        label={getLangMessage("term-form-keyword")}
         value={isEdit ? termKeyword : ""}
         register={register}
       />
@@ -82,7 +85,7 @@ export default function TermForm(props) {
           hidden
         />
         <label htmlFor="image">
-          Upload Image
+          <FormattedMessage id="term-form-image"/>
           <Fab component="span" style={{marginLeft: "15px", marginRight: "15px"}}>
             <AddPhotoAlternateOutlined/>
           </Fab>
@@ -101,7 +104,7 @@ export default function TermForm(props) {
         color="primary"
         variant="contained"
       >
-        Submit
+        <FormattedMessage id="submit-name"/>
       </Button>
     </Form>
   );

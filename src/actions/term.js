@@ -21,6 +21,9 @@ import {
   GET_TERMS_BY_GROUP_ID_FAILURE,
   GET_TERMS_BY_GROUP_ID_REQUEST,
   GET_TERMS_BY_GROUP_ID_SUCCESS,
+  RESET_GROUP_TERMS_AWARE_STATUS_FAILURE,
+  RESET_GROUP_TERMS_AWARE_STATUS_REQUEST,
+  RESET_GROUP_TERMS_AWARE_STATUS_SUCCESS,
   SET_STUDY_MODE,
   UPDATE_TERM_AWARE_STATUS_FAILURE,
   UPDATE_TERM_AWARE_STATUS_REQUEST,
@@ -272,6 +275,25 @@ const updateAwareStatusError = (error) => {
     type: UPDATE_TERM_AWARE_STATUS_FAILURE,
     payload: error
   }
+}
+
+
+export const resetTermsAwareStatus = (groupId, studyMode) => async (dispatch) => {
+  dispatch({type: RESET_GROUP_TERMS_AWARE_STATUS_REQUEST});
+  try {
+    await termService.resetAwareStatusForGroup(groupId);
+    dispatch({type: RESET_GROUP_TERMS_AWARE_STATUS_SUCCESS});
+    dispatch(getStudySet(groupId, studyMode));
+  } catch (error) {
+    dispatch(resetTermsAwareStatusError({error}));
+  }
+}
+
+const resetTermsAwareStatusError = (error) => {
+  return {
+    type: RESET_GROUP_TERMS_AWARE_STATUS_FAILURE,
+    payload: error
+  };
 }
 
 

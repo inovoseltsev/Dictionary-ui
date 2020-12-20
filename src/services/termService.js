@@ -68,6 +68,13 @@ export function updateAwareStatus(id, awareStatus) {
   });
 }
 
+export function resetAwareStatusForGroup(groupId) {
+  return createApiCall({
+    url: API_V1_URL + DEFAULT_URL + `studying/aware-status/reset/${groupId}`,
+    method: "PUT"
+  })
+}
+
 export async function deleteById(id) {
   return await createApiCall({
     url: API_V1_URL + DEFAULT_URL + id,

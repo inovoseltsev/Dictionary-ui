@@ -1,8 +1,11 @@
 {
+  "language-name": "English",
+
   "start-menu-header": "Dicter",
   "start-menu-tagline": "Study with us",
   "sign-in-title": "Sign in",
   "sign-up-title": "Sign up",
+  "submit-name": "Submit",
 
   "sign-in-form-login": "Login",
   "sign-in-form-password": "Password",
@@ -22,10 +25,46 @@
   "repeat-password-validation-message": "Passwords don't match",
   "login-error-message": "Passwords don't match",
 
-  "side-bar": "",
+  "close-pop-up-name": "Close",
+  "accept-pop-up-name": "Ok",
+  "pop-up-prevention": "You will not have opportunity to restore it",
+  "pop-up-edit": "Edit {about}",
+  "pop-up-delete": "Delete {about}",
 
-  "term-group-create-title": "Create group"
+  "hidden-content-keyword": "Keyword: {text}",
 
+  "side-bar-groups-item": "Term groups",
+  "side-bar-folders-item": "Folders",
+  "side-bar-profile-item": "Profile",
+  "side-bar-logout-item": "Logout",
 
+  "term-group-name": "group",
+  "term-group-create-title": "Create group",
+  "term-group-form-name": "Group name",
+  "term-group-form-description": "Group description",
+  "study-group-name": "Study group",
+
+  "term-name": "term",
+  "term-create-title": "Create term",
+  "term-form-name": "Term name",
+  "term-form-definition": "Term definition",
+  "term-form-keyword": "Term keyword(s)",
+  "term-form-image": "Upload image",
+
+  "study-methods-title": "Choose method",
+  "default-study-method": "Usual terms",
+  "keywords-study-method": "Keywords",
+  "images-study-method": "Images",
+  "chunks-study-method": "Chunks",
+  "group-known-message": "You already know this set. Dou want to reset?",
+  "reset-study-group-button-name": "Study again",
+  "finish-group-button-name": "finish",
+
+  "user-profile-title": "User profile",
+  "profile-form-title": "Change user info",
+  "user-profile-save-changes-name": "Save changes",
+  "choose-language-title": "Choose language",
+  "language-change-explanation": "Set language for menu, dialogs and other instructions",
+  "language-change-button-name": "Change language"
 }
 

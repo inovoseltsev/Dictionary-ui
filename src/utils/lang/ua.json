@@ -1,8 +1,69 @@
 {
-  "start-menu": {
-    "header": "Dicter",
-    "tagline": "Навчайтесь з нами",
-    "sign-in": "Вхід",
-    "sign-up": "Реєстрація"
-  }
+  "language-name": "Українська",
+
+  "start-menu-header": "Dicter",
+  "start-menu-tagline": "Навчайтесь з нами",
+  "sign-in-title": "Вхід",
+  "sign-up-title": "Реєстрація",
+  "submit-name": "Підтвердити",
+
+  "sign-in-form-login": "Логін",
+  "sign-in-form-password": "Пароль",
+  "sign-in-form-question": "Немає акаунту? ",
+
+  "sign-up-form-first-name": "Ім'я",
+  "sign-up-form-last-name": "Прізвище",
+  "sign-up-form-login": "Логін",
+  "sign-up-form-password": "Пароль",
+  "sign-up-form-repeat-password": "Повторіть пароль",
+  "sign-up-form-question": "Вже є акаунт? ",
+
+  "first-name-validation-message": "Неправильне ім'я",
+  "last-name-validation-message": "Неправильне прізвище",
+  "login-validation-message": "Неправильний логін",
+  "password-validation-message": "Пароль повинен мати хоча б одну заглавну букву, одну цифру та бути довжиною більше 3 символів",
+  "repeat-password-validation-message": "Паролі не співпадаюсть",
+  "login-error-message": "Пароль чи логін невірні",
+
+  "close-pop-up-name": "Закрити",
+  "accept-pop-up-name": "Ок",
+  "pop-up-prevention": "Ви не зможете потім відновити ці дані",
+  "pop-up-edit": "Редагувати {about}",
+  "pop-up-delete": "Видалити {about}",
+
+  "hidden-content-keyword": "Ключове слово: {text}",
+
+  "side-bar-groups-item": "Групи термінів",
+  "side-bar-folders-item": "Папки",
+  "side-bar-profile-item": "Профіль",
+  "side-bar-logout-item": "Вихід",
+
+  "term-group-name": "групу",
+  "term-group-create-title": "Створити групу",
+  "term-group-form-name": "Ім'я групи",
+  "term-group-form-description": "Опис групи",
+  "study-group-name": "Вивчати групу",
+
+  "term-name": "термін",
+  "term-create-title": "Створити термін",
+  "term-form-name": "Ім'я терміну",
+  "term-form-definition": "Значення терміну",
+  "term-form-keyword": "Ключове(ві) слова",
+  "term-form-image": "Завантажити фото",
+
+  "study-methods-title": "Виберіть метод",
+  "default-study-method": "Звичайні терміни",
+  "keywords-study-method": "Ключові слова",
+  "images-study-method": "Картинки",
+  "chunks-study-method": "Чанки",
+  "group-known-message": "Ви вже знаєте цю групу. Хочите розпочати спочатку?",
+  "reset-study-group-button-name": "Вивчати знову",
+  "finish-group-button-name": "Закінчити",
+
+  "user-profile-title": "Профіль користувача",
+  "profile-form-title": "Змінити інформацію користувача",
+  "user-profile-save-changes-name": "Зберегти зміни",
+  "choose-language-title": "Виберіть мову",
+  "language-change-explanation": "Встановіть мову для меню, діалогових вікон та іншої інформації",
+  "language-change-button-name": "Змінити мову"
 }

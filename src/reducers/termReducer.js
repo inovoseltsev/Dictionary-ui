@@ -22,6 +22,9 @@ import {
   GET_TERMS_BY_GROUP_ID_FAILURE,
   GET_TERMS_BY_GROUP_ID_REQUEST,
   GET_TERMS_BY_GROUP_ID_SUCCESS,
+  RESET_GROUP_TERMS_AWARE_STATUS_FAILURE,
+  RESET_GROUP_TERMS_AWARE_STATUS_REQUEST,
+  RESET_GROUP_TERMS_AWARE_STATUS_SUCCESS,
   SET_STUDY_MODE,
   UPDATE_TERM_AWARE_STATUS_FAILURE,
   UPDATE_TERM_AWARE_STATUS_REQUEST,
@@ -256,6 +259,27 @@ export default function termReducer(state = initialState, action) {
       }
 
     case UPDATE_TERM_AWARE_STATUS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        status: FAILED
+      }
+
+    case RESET_GROUP_TERMS_AWARE_STATUS_REQUEST:
+      return {
+        ...state,
+        error: null,
+        status: LOADING
+      }
+
+    case RESET_GROUP_TERMS_AWARE_STATUS_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        status: SUCCEED
+      }
+
+    case RESET_GROUP_TERMS_AWARE_STATUS_FAILURE:
       return {
         ...state,
         error: action.payload,

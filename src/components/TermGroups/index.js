@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import CardsRow from "../CardsRow";
 import AppCard from "../shared/card/AppCard";
 import {useDispatch, useSelector} from "react-redux";
@@ -8,6 +8,7 @@ import TermGroupsControlBar from "../../containres/term-group/TermGroupsControlB
 import TermGroupForm from "../../containres/term-group/TermGroupForm";
 import {useHistory} from "react-router";
 import ContentCover from "../shared/ContentCover";
+import {LanguageMessageContext} from "../../context";
 
 export default function TermGroups() {
 
@@ -16,6 +17,7 @@ export default function TermGroups() {
   const userId = useSelector(state => state.userReducer.id);
   const dispatch = useDispatch();
   const history = useHistory();
+  const getLangMessage = useContext(LanguageMessageContext);
 
   useEffect(() => {
     dispatch(getUserTermGroups(userId));
@@ -40,7 +42,7 @@ export default function TermGroups() {
               key={el.id}
               cardName={el.name}
               content={el.description}
-              about="group"
+              about={getLangMessage("term-group-name")}
               onDelete={() => onGroupDelete(el.id)}
               form={TermGroupForm}
               groupName={el.name}

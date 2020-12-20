@@ -1,24 +1,27 @@
-import React from "react";
+import React, {useContext} from "react";
 import SideBarItem from "../SideBarItem";
-
-import "./index.css"
 import AppHeader from "../../shared/AppHeader";
 import {useDispatch} from "react-redux";
 import {logoutUser} from "../../../actions/auth";
 import createSideBarItem from "../../../helpers/createSideBarItem";
+import {LanguageMessageContext} from "../../../context";
+
+import "./index.css"
 
 export default function UserSideBar() {
+
   const dispatch = useDispatch();
+  const getLangMessage = useContext(LanguageMessageContext);
 
   const onLogoutClick = () => {
     dispatch(logoutUser());
   }
 
   const items = [
-    createSideBarItem(1, "/term-groups", "Term groups"),
-    createSideBarItem(2, "/folders", "Folders"),
-    createSideBarItem(3, "/profile", "Profile"),
-    createSideBarItem(4, "/sign-in", "Logout", onLogoutClick)
+    createSideBarItem(1, "/term-groups", getLangMessage("side-bar-groups-item")),
+    createSideBarItem(2, "/folders", getLangMessage("side-bar-folders-item")),
+    createSideBarItem(3, "/profile", getLangMessage("side-bar-profile-item")),
+    createSideBarItem(4, "/sign-in", getLangMessage("side-bar-logout-item"), onLogoutClick)
   ];
 
   return (

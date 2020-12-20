@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import CardContent from "../CardContent";
 import Card from "@material-ui/core/Card";
 
 import "./index.css"
 import PopUp from "../../PopUp";
 import {DialogContentText} from "@material-ui/core";
+import {FormattedMessage} from "react-intl";
+import {LanguageMessageContext} from "../../../../context";
 
 export default function AppCard(props) {
 
@@ -17,6 +19,7 @@ export default function AppCard(props) {
   const [isEditable, setEditable] = useState(false);
   const [isHiddenVisible, setHiddenVisible] = useState(false);
   const cardHeightStyle = {height: isHiddenVisible ? "210px" : "100px"}
+  const getLangMessage = useContext(LanguageMessageContext);
 
   const onEditPress = () => {
     setEditable(true);
@@ -40,7 +43,6 @@ export default function AppCard(props) {
           content={content}
           onEdit={onEditPress}
           onDeletePress={onDeletePress}
-          dialogAbout={about}
           onCardOpen={!isTerm ? onCardOpen : onHiddenContentShow}
           isHiddenVisible={isHiddenVisible}
           isTerm={isTerm}
@@ -49,20 +51,20 @@ export default function AppCard(props) {
 
         <PopUp
           open={isPopUpOpen}
-          title={isEditable ? "" : `Delete ${about}`}
+          title={isEditable ? "" : getLangMessage("pop-up-delete", {about})}
           onClose={() => setPopUpOpen(false)}
           onAccept={isEditable ? "" : onDelete}
         >
           {isEditable ?
             <Form
-              title={`Edit ${about}`}
+              title={getLangMessage("pop-up-edit", {about})}
               closePopUp={() => setPopUpOpen(false)}
               isEdit
               {...props}
             />
             :
             <DialogContentText>
-              You will not have opportunity to restore it
+              <FormattedMessage id="pop-up-prevention"/>
             </DialogContentText>
           }
         </PopUp>
