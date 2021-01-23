@@ -37,7 +37,7 @@ export default function Terms() {
             about={getLangMessage("term-name")}
             onDelete={() => onTermDelete(el.id)}
             isTerm
-            isOpenIconHidden={!el.keyword && !el.image}
+            isOpenIconHidden={!el.keyword && !el.imageFile.content}
             text={el.keyword}
             image={el.imageFile}
             form={TermForm}
